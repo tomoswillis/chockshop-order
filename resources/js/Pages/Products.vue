@@ -66,7 +66,7 @@
                          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                          
 
-                      
+                        <inertia-link :href="route('product.addToCart', product.id )" method="post"  class="text-indigo-600 hover:text-indigo-900">add to cart</inertia-link>
                          
                         <inertia-link :href="route('products.destroy', product.id )" method="delete"  class="text-indigo-600 hover:text-indigo-900">delete</inertia-link>
                               
