@@ -3,9 +3,11 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\models\User;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('products', ProductController::class);
     Route::resource('users', UsersController::class);
+    Route::post('add-to-cart/{id}', [
+        'uses' => 'App\Http\Controllers\ProductController@addToCart',
+        'as' => 'product.addToCart',
+        ]);
 });
 
 
