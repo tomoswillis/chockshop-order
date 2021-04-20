@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Product;
+use App\Models\Cart;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Session;
 
 class ProductController extends Controller
 {
@@ -19,7 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         return Inertia::render('Products', [
-            'product' => Product::all(),
+            'product' => Product::with('categories:id,name')
+                ->get()
         ]);
     }
 
@@ -44,6 +47,18 @@ class ProductController extends Controller
         Product::create($request->validated());
 
         return Redirect::route('products.index');
+    }
+
+    public function addToCart(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
+        $request->session()->put('cart', $cart);
+    
+        return  Redirect::route('products.index');
+
     }
 
     /**
