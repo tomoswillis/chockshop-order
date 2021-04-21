@@ -21,7 +21,7 @@
                                     Dashboard
                                 </jet-nav-link>
                             </div>
-                             <div v-if="$page.props.user.name === 'User'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('products.index')" :active="route().current('products.index')">
                                     Products
                                 </jet-nav-link>
@@ -29,6 +29,12 @@
                             <div v-if="$page.props.user.name === 'Admin'"  class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('users.index')" :active="route().current('users.index')" >
                                     Franchises
+                                </jet-nav-link>
+                            </div>
+
+                            <div v-if="$page.props.user.name === 'Admin'"  class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('checkout.index')" :active="route().current('checkout.index')" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -92,6 +98,7 @@
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <jet-dropdown align="right" width="48">
+                                    
                                     <template #trigger>
                                         <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
