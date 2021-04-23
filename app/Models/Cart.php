@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Cart 
 {
-    public $items = null;
+    public $items = [];
     public $totalQty = 0;
     public $totalPrice = 0;
     
@@ -37,4 +37,5 @@ class Cart
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }
+
 }

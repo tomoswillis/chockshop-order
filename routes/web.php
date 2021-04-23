@@ -47,6 +47,11 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'App\Http\Controllers\ProductController@destroyCart',
         'as' => 'clear.cart',
         ]);
+
+    Route::post('purchase', [
+        'uses' => 'App\Http\Controllers\CheckoutController@purchase',
+        'as' => 'checkout.create',
+        ]);
 });
 
 

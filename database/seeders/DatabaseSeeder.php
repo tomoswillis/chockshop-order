@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use \App\Models\Category;
 use \App\Models\Product;
+use \App\Models\Order;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
+            // OrderTableSeeder::class,
         ]);
 
         Category::factory()->count(5)->create();
@@ -32,5 +34,7 @@ class DatabaseSeeder extends Seeder
                 $categories->random(1)->pluck('id')->toArray()
             );
         });
+
+        
     }
 }
