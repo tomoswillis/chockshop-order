@@ -58,7 +58,12 @@ class ProductController extends Controller
         $request->session()->put('cart', $cart);
     
         return  Redirect::route('products.index');
+    }
 
+    public function destroyCart()
+    {
+        Session::forget('cart');
+        return  Redirect::route('products.index');
     }
 
     /**

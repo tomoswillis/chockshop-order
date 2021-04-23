@@ -17,7 +17,10 @@
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">Actions</th>
                 </tr>
                 </thead>
-                <tbody>
+                <div v-if="!cart">
+
+                </div>
+                <tbody v-if="cart">
                     <tr v-for="item in cart.items" :key="item.id">
                         <td class="p-4" v-text="item.item.name"></td>
                         <td class="p-4" v-text="item.qty"></td>
@@ -162,6 +165,7 @@
 <script>
     import { loadStripe } from '@stripe/stripe-js';
     import AppLayout from '@/Layouts/AppLayout'
+    import { Inertia } from '@inertiajs/inertia'
     export default {
         components: {
             AppLayout,
@@ -233,20 +237,10 @@
                 } else {
                     console.log(paymentMethod);
                     this.customer.payment_method_id = paymentMethod.id;
-                    this.customer.amount = this.$store.state.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-                    this.customer.cart = JSON.stringify(this.$store.state.cart);
-                    axios.post('/api/purchase', this.customer)
-                        .then((response) => {
-                            this.paymentProcessing = false;
-                            console.log(response);
-                            this.$store.commit('updateOrder', response.data);
-                            this.$store.dispatch('clearCart');
-                            this.$router.push({ name: 'order.summary' });
-                        })
-                        .catch((error) => {
-                            this.paymentProcessing = false;
-                            console.error(error);
-                        });
+                    this.customer.amount = this.$page.props.cart.totalPrice;
+                    this.customer.cart = JSON.stringify(this.$page.props.cart.items);
+                    Inertia.post('purchase', this.customer);
+                    this.paymentProcessing = false;
                 }
             }
         },
