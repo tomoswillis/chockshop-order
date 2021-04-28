@@ -63,7 +63,7 @@ class ProductController extends Controller
     public function destroyCart()
     {
         Session::forget('cart');
-        return  Redirect::route('products.index');
+        return  Redirect::back();
     }
 
     /**
