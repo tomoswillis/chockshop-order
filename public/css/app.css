@@ -33373,6 +33373,17 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.badge {
+  position: absolute;
+  top: 11px;
+  right: -10px;
+  padding: 2px 8px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 0.8em;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

@@ -17,9 +17,6 @@
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">Actions</th>
                 </tr>
                 </thead>
-                <div v-if="!cart">
-
-                </div>
                 <tbody v-if="cart">
                     <tr v-for="item in cart.items" :key="item.id">
                         <td class="p-4" v-text="item.item.name"></td>
@@ -44,7 +41,11 @@
             </table>
         </div>
 
-        <div class="lg:w-2/3 w-full mx-auto mt-8">
+        <div v-if="!cart">
+            <h1 class="font-semibold text-xl text-gray-800 leading-tight text-center my-8"> Your cart is empty </h1>
+        </div>
+
+        <div class="lg:w-2/3 w-full mx-auto mt-8" v-if="cart" >
             <div class="flex flex-wrap -mx-2 mt-8">
                 <div class="p-2 w-1/3">
                     <div class="relative">
@@ -239,7 +240,7 @@
                     this.customer.payment_method_id = paymentMethod.id;
                     this.customer.amount = this.$page.props.cart.totalPrice;
                     this.customer.cart = JSON.stringify(this.$page.props.cart.items);
-                    Inertia.post('purchase', this.customer);
+                    Inertia.post('purchase', this.customer);  
                     this.paymentProcessing = false;
                 }
             }
