@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderReceived;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 class CheckoutController extends Controller
@@ -22,23 +25,8 @@ class CheckoutController extends Controller
 
     public function purchase(Request $request)
     {
-        // $user = User::firstOrCreate(
-        //     [
-        //         'email' => 'admin@admin.com'
-        //     ],
-        //     [
-        //         'password' => Hash::make(Str::random(12)),
-        //         'name' => $request->input('first_name') . ' ' . $request->input('last_name'),
-        //         'address' => $request->input('address'),
-        //         'city' => $request->input('city'),
-        //         'state' => $request->input('state'),
-        //         'zip_code' => $request->input('zip_code')
-        //     ]
-        // );
 
-        $user = $request->user();
-        
-        
+        $user = $request->user(); 
 
         try {
             $user->createOrGetStripeCustomer();
@@ -51,6 +39,7 @@ class CheckoutController extends Controller
             $order = $user->orders()
                 ->create([
                     'transaction_id' => $payment->charges->data[0]->id,
+                    'status_id' => 1,
                     // dd($payment->charges->data[0]->amount),
                     'total' => $payment->charges->data[0]->amount,
                 ]);
@@ -61,9 +50,17 @@ class CheckoutController extends Controller
                     ->attach($item['item']['id'], ['quantity' => $item['qty']]);
             }
 
+            Mail::to($user)->send(new OrderReceived($items));
+            
             $order->load('products');
-            // return $order;
-            return  Redirect::back();
+
+            $cart = new ProductController;
+            $cart->destroyCart();
+
+            $request->session()->flash('flash.banner', 'Yay it works!');
+            $request->session()->flash('flash.bannerStyle', 'success');
+
+            return Redirect::back();
             
 
         } catch (\Exception $e) {
