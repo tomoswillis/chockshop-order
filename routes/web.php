@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('products', ProductController::class);
     Route::resource('users', UsersController::class);
     Route::resource('checkout', CheckoutController::class);
+    Route::resource('orders', OrderController::class);
     Route::post('add-to-cart/{id}', [
         'uses' => 'App\Http\Controllers\ProductController@addToCart',
         'as' => 'product.addToCart',

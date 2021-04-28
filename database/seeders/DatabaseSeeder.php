@@ -7,6 +7,7 @@ use \App\Models\Category;
 use \App\Models\Product;
 use \App\Models\Order;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
+            StatusTableSeeder::class,
             // OrderTableSeeder::class,
         ]);
 
