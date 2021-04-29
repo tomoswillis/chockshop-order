@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             StatusTableSeeder::class,
-            // OrderTableSeeder::class,
+            ProductTableSeeder::class,
         ]);
 
-        Category::factory()->count(5)->create();
-        Product::factory()->count(5)->create();
+        Category::factory()->count(3)->create();
+        // Product::factory()->count(5)->create();
 
         $categories = Category::all();
         Product::all()->each(function ($product) use ($categories){
