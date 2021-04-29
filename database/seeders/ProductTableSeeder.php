@@ -18,7 +18,7 @@ class ProductTableSeeder extends Seeder
                 'product_hero_image' => 'https://i.postimg.cc/J7Tv5Z6J/rasp-white-brownie.png',
                 'product_title_image' => 'images/products/raspberry-and-white-chocolate-title.svg',
                 'description' => 'This delicious white chocolate brownie  summer flavours.',
-                'price' => 0.01,
+                'price' => 105,
             ],
             [
                 'id'    => 2,
@@ -28,7 +28,7 @@ class ProductTableSeeder extends Seeder
                 'product_hero_image' => 'https://i.postimg.cc/mgNsVCYN/rocky-road-brownie.png',
                 'product_title_image' => 'images/products/',
                 'description' => 'A firm favourite with kids and adults alike, the Rocky Road comes loaded with hidden treats to really turn up the fun!',
-                'price' => 0.01,
+                'price' => 105,
             ],
             // [
             //     'id'    => 2,
