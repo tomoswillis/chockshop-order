@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', UsersController::class);
     Route::resource('checkout', CheckoutController::class);
     Route::resource('orders', OrderController::class);
+    
     Route::post('add-to-cart/{id}', [
         'uses' => 'App\Http\Controllers\ProductController@addToCart',
         'as' => 'product.addToCart',
