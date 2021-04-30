@@ -26,7 +26,7 @@ class ProductTableSeeder extends Seeder
                 'slug' => '3',
                 'product_bg_image' => 'https://i.postimg.cc/HL6C1mPr/rocky-road-bg.png',
                 'product_hero_image' => 'https://i.postimg.cc/mgNsVCYN/rocky-road-brownie.png',
-                'product_title_image' => 'images/products/',
+                'product_title_image' => 'images/products/rocky-road.svg',
                 'description' => 'A firm favourite with kids and adults alike, the Rocky Road comes loaded with hidden treats to really turn up the fun!',
                 'price' => 105,
             ],
