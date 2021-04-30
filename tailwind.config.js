@@ -14,6 +14,17 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+
+            colors: {
+                chock: {
+                    DEFAULT: '#f4ebd3',
+                    dark: '#b2977b',
+                },
+                slate: {
+                    light: '#8a8a8a',
+                    DEFAULT: '#151515' 
+                },
+            },
         },
     },
 
