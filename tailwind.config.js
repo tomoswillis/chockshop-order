@@ -12,16 +12,18 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                chockshop: ['chockshop', ...defaultTheme.fontFamily.sans],
             },
 
             colors: {
                 chock: {
                     DEFAULT: '#f4ebd3',
                     dark: '#b2977b',
+                    text: '#524621',
                 },
                 slate: {
-                    light: '#8a8a8a',
+                    light: '#afafaf',
                     DEFAULT: '#151515' 
                 },
             },

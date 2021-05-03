@@ -2,6 +2,24 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'chockshop';
+  src: url('../../public/fonts/chockshop.woff2') format('woff2'),
+       url('../../public/fonts/chockshop.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  vertical-align: text-bottom;
+  line-height: 1.5;
+
+}
+
+hr {
+  border-top:5px dotted rgb(244, 235, 211);
+  width:100%;
+  
+}
+
+
 .badge {
     position: absolute;
     top: 11px;
@@ -47,4 +65,15 @@
   background-image: url("../../public/images/bg/checkout.png");
   background-repeat: no-repeat;
   background-size: contain, cover;
+}
+
+.approved{
+
+  @apply px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800;
+}
+
+.pending{
+
+  @apply px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800;
+  
 }
