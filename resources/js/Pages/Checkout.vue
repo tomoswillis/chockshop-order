@@ -1,13 +1,14 @@
 <template>
     <app-layout>
          <div class="w-full  checkoutImg">
-            <div class=" w-11/12 mx-auto mt-32 flex glassClear p-24" v-if="cart">
-                <div class=" w-2/3 overflow-auto"  >
-                    <h3 class="text-white text-xl font-bold">Shopping Cart</h3>
-                    <p class="text-white">You have {{cart.totalQty}} items in your cart</p>
-
-                    <div v-for="item in cart.items" :key="item.id"  class="flex items-center justify-around my-5 glass  rounded-xl ">
-                        <div class="w-24 rounded bg-grey-900">
+            <div class=" w-11/12 mx-auto mt-32 flex md:flex-col lg:flex-row glassClear p-24" v-if="cart">
+                <div class=" w-2/3"  >
+                    <h3 class="text-white font-chockshop text-xl">Shopping Cart</h3>
+                    <p class="text-white text-sm">You have {{cart.totalQty}} items in your cart</p>
+                    
+<hr class="mt-5 w-3/4">
+                    <div v-for="item in cart.items" :key="item.id"  class="flex items-center justify-around my-5 glass  rounded-xl p-1">
+                        <div class="w-24 rounded-2xl border m-5 border-slate-light">
                             <img :src="item.item.product_hero_image" alt="">
                         </div>
                         <div class="w-5/12">
@@ -27,11 +28,11 @@
                     </div>
                     
                 </div>
-                <div class="h-full bg-chock-dark rounded-xl w-1/3 p-2 ml-5">
+                <div class="h-full bg-chock-dark rounded-xl w-1/3 p-2 ml-5 text-white">
                     <div class="flex flex-wrap -mx-2 mt-8">
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="first_name" class="leading-7 text-sm text-gray-600">First Name</label>
+                                <label for="first_name" class="leading-7 text-sm text-chock-text">First Name</label>
                                 <input
                                     type="text"
                                     id="first_name"
@@ -44,7 +45,7 @@
                         </div>
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="last_name" class="leading-7 text-sm text-gray-600">Last Name</label>
+                                <label for="last_name" class="leading-7 text-sm text-chock-text">Last Name</label>
                                 <input
                                     type="text"
 
@@ -59,7 +60,7 @@
                     </div>
                     <div class=" ">
                             <div class="relative">
-                                <label for="email" class="leading-7 text-sm text-gray-600">Email Address</label>
+                                <label for="email" class="leading-7 text-sm text-chock-text">Email Address</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -75,13 +76,15 @@
                     <div class="flex flex-wrap -mx-2 mt-4">
                         <div class="p-2 w-full">
                             <div class="relative">
-                                <label for="card-element" class="leading-7 text-sm text-gray-600">Credit Card Info</label>
+                                <label for="card-element" class="leading-7 text-sm text-chock-text">Credit Card Info</label>
                                 <div id="card-element"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="w-full px-1 h-px bg-white rounded my-5 "></div>
+
+                    
                     <div class="flex justify-between text-white text-sm">
                         <p>Total</p>
                         <p v-text="total(cart.totalPrice)" class="font-bold"></p>

@@ -40,11 +40,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', UsersController::class);
     Route::resource('checkout', CheckoutController::class);
     Route::resource('orders', OrderController::class);
+    Route::post('approve/{id}', [
+        'uses' => 'App\Http\Controllers\OrderController@approve',
+        'as' => 'order.approve',
+        ]);
     
     Route::post('add-to-cart/{id}', [
         'uses' => 'App\Http\Controllers\ProductController@addToCart',
         'as' => 'product.addToCart',
         ]);
+
 
     Route::post('clearCart', [
         'uses' => 'App\Http\Controllers\ProductController@destroyCart',

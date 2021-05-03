@@ -26,8 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <inertia-link :href="route('product.addToCart', item.id )" method="post" class="z-50">
-                    <button class="addToBasket cursor-pointer ">Add To Basket</button>
+                <inertia-link preserve-scroll :href="route('product.addToCart', item.id )" method="post" class="z-50">
+                    <button class="addToBasket cursor-pointer z-50 ">Add To Basket</button>
                 </inertia-link>
             </div>
         </div>
