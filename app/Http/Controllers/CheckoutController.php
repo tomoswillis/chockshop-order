@@ -57,7 +57,7 @@ class CheckoutController extends Controller
             $cart = new ProductController;
             $cart->destroyCart();
 
-            $request->session()->flash('flash.banner', 'Yay it works!');
+            $request->session()->flash('flash.banner', 'Your order has been recieved, Please check your emails!');
             $request->session()->flash('flash.bannerStyle', 'success');
 
             return Redirect::back();
