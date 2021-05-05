@@ -50,7 +50,18 @@ class CheckoutController extends Controller
                     ->attach($item['item']['id'], ['quantity' => $item['qty']]);
             }
 
-            Mail::to($user)->send(new OrderReceived($items));
+            
+            
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+            $request->session()->flash('flash.banner', 'Oops that has not worked. It is problem on our end, we are on it!');
+            $request->session()->flash('flash.bannerStyle', 'danger');
+
+            return Redirect::back();
+        }
+
+        Mail::to($user)->send(new OrderReceived($items));
             
             $order->load('products');
 
@@ -61,11 +72,6 @@ class CheckoutController extends Controller
             $request->session()->flash('flash.bannerStyle', 'success');
 
             return Redirect::back();
-            
-
-        } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
-        }
 
     }
 }

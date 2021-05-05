@@ -2,8 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Support\Facades\Auth;
 
 class HandleInertiaRequests extends Middleware
@@ -37,10 +40,11 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+        
+        // dd(User::where('id', 1)->with('roles')->with('pivot')->get());
         return array_merge(parent::share($request), [
             'cart' =>   $request->session()->get('cart'),
-            // 'product-access' =>   Auth::user()->get('role'),
-            // 'user-access' =>   Auth::user()->can('users_access'),
+            // 'user-access' =>   ,
         ]);
     }
 }

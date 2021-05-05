@@ -50,7 +50,10 @@ class OrderController extends Controller
 
         Mail::to($user['email'])->send(new OrderApproved($order));
 
-        return  Redirect::route('orders.index');
+        $request->session()->flash('flash.banner', 'Order Updated');
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return  Redirect::back();
     }
     
     public function destroy(Order $order)

@@ -25,10 +25,10 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with('roles')->get();
+        
 
         return Inertia::render('Users', [
-            'users' => $users,
+            'users' => User::with('roles')->get(),
         ]);
     }
 
