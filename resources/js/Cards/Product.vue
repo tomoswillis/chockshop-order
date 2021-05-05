@@ -2,23 +2,23 @@
     <div class="mx-12 my-16 relative">
         <img :src="item.product_bg_image" 
             border='0' :alt='item.name' 
-            class="glass-bg  "/>
+            class="glass-bg  absolute"/>
     
         <div class="glass p-2 w-52 mx-5 mt-12 relative">
-            <div class=" -inset-y-32 -inset-x-7 w-64 pimage">
+            <div class="absolute -inset-y-32 -inset-x-7 w-64 pimage">
                 <img :src="item.product_hero_image" border='0' :alt='item.name' class=" pimage"/>
             </div>
-            <div class="z-0 h-full">
+            <div class=" h-full">
                 <div class="h-14"></div>
                 <div> 
                     <img :src="item.product_title_image" alt="" class="w-3/4" >
                     <p class="text-xs mt-3">{{item.description}} </p>
                 </div>    
-                <div class="flex justify-between items-center mt-2 z-20">
+                <div class="flex justify-between items-center mt-2 ">
                     <div>
                         <p>£{{item.price/100}}</p>
                     </div>
-                    <div class="z-30">
+                    <div class="relative">
                         <div class="flex">
                             <button @click="decrement()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
                             <input type="text" :value="quantity" >
@@ -26,8 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <inertia-link preserve-scroll :href="route('product.addToCart', item.id )" method="post" class="z-50">
-                    <button class="addToBasket cursor-pointer z-50 ">Add To Basket</button>
+                <inertia-link preserve-scroll :href="route('product.addToCart', item.id )" method="post" class="">
+                    <button class="addToBasket cursor-pointer relative ">Add To Basket</button>
                 </inertia-link>
             </div>
         </div>
@@ -71,7 +71,7 @@ export default {
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    z-index:0;
+    
 }
 
 .glass-bg{

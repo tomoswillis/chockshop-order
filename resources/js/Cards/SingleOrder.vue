@@ -1,5 +1,5 @@
 <template>
-<div @click="$emit('update', data)">
+<div>
     <div  class="flex items-center justify-around  rounded-xl p-1 ">
         <div class=" rounded border m-5 border-slate-light text-white py-2 px-3">
         <p>{{data.id}}</p>

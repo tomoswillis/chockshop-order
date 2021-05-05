@@ -1,56 +1,24 @@
 <template>
     <app-layout>
+
+
+<select v-model="filter">
+    <option value="all">All</option>
+    <option value="pending">Pending</option>
+</select> 
     <div class="w-full p-5 flex min-h-screen">
         <div class="glass w-5/12 py-6">
-        <button @click="filterPending">filter</button>
             <single-order 
                 v-for="order in orders" 
                 :key="order.id" 
                 :data="order" 
-                v-on:update="updateSelected($event)"
+                v-on:update="updatetest()"
+                @click="updateSelected(order)"
                 class="mx-2 rounded border-b border-t border-transparent hover:border-chock cursor-pointer "/>
         </div>
-        
-        <div class="w-5/12 text-white p-5 mx-auto rounded place-self-center" v-if="this.selected != null">
-            <!-- <selected-order :data="this.selcted"/> -->
-            <h1 class="font-chockshop text-xl text-center">{{this.selected.user.name}}</h1>
-            <div class="px-6 py-4 mx-auto flex flex-col items-center">
-              <status :data="this.selected.status.name"/>
-            </div>
-            <p class="text-center text-slate-light">{{this.selected.transaction_id}}</p>
-            <div class="flex justify-between text-sm text-slate-light mt-5">
-                <p>Products</p>
-                <p>Quantity</p>
-            </div>
-            <div v-for="product in this.selected.products" :key="product.id">
-                <div class="flex justify-between w-full my-2">
-                    <h3>{{product.name}}</h3>
-                    <p>{{product.pivot.quantity}}</p>
-                </div>
-            </div>
-            <hr>
 
-            <div>
-                <div class="flex justify-between my-5">
-                    <h1 class="">Total</h1>
-                    <p class="font-bold">{{total(this.selected.total)}}</p>
-                </div>
-                
-            </div>
-
-            <div class="flex justify-around">
-                <div>
-                    <button class="w-36 px-3 py-1 mr-2 rounded bg-chock text-chock-text">
-                        Edit
-                    </button>
-                     <inertia-link preserve-scroll :href="route('order.approve', this.selected.id )" method="post">
-                        <button class="w-36 px-3 py-1 ml-2 rounded bg-green-100 text-green-800" v-if="this.selected.status.id == 1">
-                            Approve
-                        </button>
-                     </inertia-link>
-                </div>
-
-            </div>
+        <div class="w-5/12 text-white p-5 mx-auto rounded place-self-center" v-if="this.test != null">
+            <selected-order :data="this.test"/>
         </div>
     </div>
     </app-layout>
@@ -76,42 +44,56 @@
        
         data() {
             return {
-               selected: null,
-               foo:null,
+               test: null,
+               newList: this.orders,
+               filter: 'all',
             }
         },
-
+        
         methods: {
-            updateSelected: function(emitted) {
-                return this.selected = emitted;
+            updateSelected(order) {
+              return this.test = order;
             },
 
             total(item) {
                 item = (item / 100);
                 return item.toLocaleString('en-uk', { style: 'currency', currency: 'GBP' });
             },
-
-            filterPending() {
-              
-                 const test = this.orders.filter(order => order.status.id == 1);
-                 console.log(test);
-               
-
-            },
             
+            filterOrders() {
+                switch (this.filter) {
+                    case 'all':
+                        this.newList = this.orders;
+                        break;
+                    case 'pending':
+                        this.newList = this.orders.filter(order => order.status.id == 1);
+                        break;
+                    default:
+                return console.log('unknown');
+                }
+            }, 
+
+            updatetest() {
+                this.newList = this.orders;
+                console.log(hello);
+            }
         },
 
         watch: {
-            foo(newVal, old) {
-                console.log(`'new val' . ${newVal}`);
-                console.log(newVal);
-                 console.log(`'old' . ${old}`);
+            filter(newvar) {
+                this.filterOrders(newvar)
+            },
 
-            this.orders = newVal;
-            }
+            
+
         },
+
         computed: {
             
+
+                       
+
+           
         }
     }
 </script>

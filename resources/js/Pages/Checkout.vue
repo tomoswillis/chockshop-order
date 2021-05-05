@@ -1,8 +1,11 @@
 <template>
     <app-layout>
-         <div class="w-full  checkoutImg">
-            <div class=" w-11/12 mx-auto mt-32 flex md:flex-col lg:flex-row glassClear p-24" v-if="cart">
-                <div class=" w-2/3"  >
+         <div class="w-full  checkoutImg relative">
+            <div class=" w-11/12 mx-auto place-content-center flex md:flex-col lg:flex-row glassClear p-24" >
+             <div v-if="!cart" class="w-2/3 self-center glass" v-on:load="paymentProcessing = true">
+                <h1 class=" text-2xl text-white font-chockshop text-center my-8"> Your cart is empty </h1>
+            </div>
+                <div class=" w-2/3" v-if="cart">
                     <h3 class="text-white font-chockshop text-xl">Shopping Cart</h3>
                     <p class="text-white text-sm">You have {{cart.totalQty}} items in your cart</p>
                     
@@ -65,7 +68,6 @@
                                     type="email"
                                     id="email"
                                     name="email"
-                                    
                                     class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                     v-model="customer.email"
                                     :disabled="paymentProcessing"
@@ -85,13 +87,13 @@
                     <div class="w-full px-1 h-px bg-white rounded my-5 "></div>
 
                     
-                    <div class="flex justify-between text-white text-sm">
+                    <div class="flex justify-between text-white text-sm"  v-if="cart">
                         <p>Total</p>
                         <p v-text="total(cart.totalPrice)" class="font-bold"></p>
                     </div> 
                     <div class="p-2 w-full">
                         <button
-                            class="bg-chock align-center w-full rounded-xl font-bold py-2 cursor-pointer mt-1 hover:bg-red-100"
+                            class="bg-chock align-center w-full rounded-xl font-bold py-2 text-chock-text cursor-pointer mt-1 border border-transpartent hover:border-chock hover:bg-chock-text hover:text-chock "
                             @click="processPayment"
                             :disabled="paymentProcessing"
                             v-text="paymentProcessing ? 'Processing' : 'Pay Now'"
@@ -101,9 +103,7 @@
             
                 
             </div>
-                <div v-if="!cart">
-                    <h1 class="font-semibold text-xl text-gray-800 leading-tight text-center my-8"> Your cart is empty </h1>
-                </div>
+               
     </div>
 
     </app-layout>
