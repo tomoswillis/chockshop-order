@@ -19,7 +19,7 @@
                         <p>£{{item.price/100}}</p>
                     </div>
                     <div class="relative">
-                        <div class="flex">
+                        <div class="flex text-white">
                             <button @click="decrement()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
                             <input type="text" :value="quantity" >
                             <button @click="increment()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <inertia-link preserve-scroll :href="route('product.addToCart', item.id )" method="post" class="">
-                    <button class="addToBasket cursor-pointer relative ">Add To Basket</button>
+                    <button class=" bg-chock align-center w-full rounded text-xs font-bold py-2 text-chock-text cursor-pointer border border-transpartent hover:border-chock hover:bg-chock-dark hover:text-chock relative">Add To Basket</button>
                 </inertia-link>
             </div>
         </div>
@@ -106,12 +106,7 @@ input {
     
   }
   
-button {
-    background: none;
-    color: #d3c2a8;
-    cursor: pointer;
-    border-radius: 100%;
-  }
+
 
 .addToBasket{
   background-color:#f5ecd4;
@@ -123,7 +118,6 @@ button {
   font-size: .8rem;
   text-align: center;
   padding: .5rem;
-  border-radius: .5rem;
 }
 </style>
 

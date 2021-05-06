@@ -18,7 +18,7 @@
         </div>
 
         <div class="w-5/12 text-white p-5 mx-auto rounded place-self-center" v-if="this.test != null">
-            <selected-order :data="this.test"/>
+            <selected-order :product="this.test"/>
         </div>
     </div>
     </app-layout>

@@ -3,7 +3,7 @@
         <jet-banner />
 
         <div class="min-h-screen bg-slate relative ">
-            <nav class=" absolute glassClear w-full z-50 chockGlow ">
+            <nav class=" absolute glassClear w-full z-50 chockGlow inset ">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
                     <div class="flex justify-between h-16">
@@ -132,7 +132,7 @@
                                             Profile
                                         </jet-dropdown-link>
 
-                                        <jet-dropdown-link :href="route('profile.show')">
+                                        <jet-dropdown-link :href="route('myorders.index')">
                                             My Orders
                                         </jet-dropdown-link>
 

@@ -1,27 +1,19 @@
 <template>
     <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
-            </h2>
-        </template>
-
+     
+        <div class="pt-36 mb-5 text-chock font-chockshop h-24 max-w-7xl mx-auto sm:px-6 lg:px-8  text-2xl">
+            <h1>Profile</h1>
+        </div>
         <div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 ">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-                    <update-profile-information-form :user="$page.props.user" />
+                    <update-profile-information-form :user="$page.props.user"  class="text-chock"/>
 
                     <jet-section-border />
                 </div>
 
                 <div v-if="$page.props.jetstream.canUpdatePassword">
-                    <update-password-form class="mt-10 sm:mt-0" />
-
-                    <jet-section-border />
-                </div>
-
-                <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <two-factor-authentication-form class="mt-10 sm:mt-0" />
+                    <update-password-form class="mt-10 sm:mt-0 text-chock" />
 
                     <jet-section-border />
                 </div>

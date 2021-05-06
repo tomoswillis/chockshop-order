@@ -2,7 +2,7 @@
     <app-layout>
          <div class="w-full  checkoutImg relative">
             <div class=" w-11/12 mx-auto place-content-center flex md:flex-col lg:flex-row glassClear p-24" >
-             <div v-if="!cart" class="w-2/3 self-center glass" v-on:load="paymentProcessing = true">
+             <div v-if="!cart" class="w-2/3 self-center glass">
                 <h1 class=" text-2xl text-white font-chockshop text-center my-8"> Your cart is empty </h1>
             </div>
                 <div class=" w-2/3" v-if="cart">
@@ -93,7 +93,7 @@
                     </div> 
                     <div class="p-2 w-full">
                         <button
-                            class="bg-chock align-center w-full rounded-xl font-bold py-2 text-chock-text cursor-pointer mt-1 border border-transpartent hover:border-chock hover:bg-chock-text hover:text-chock "
+                            class="bg-chock align-center w-full rounded-xl font-bold py-2 text-chock-text cursor-pointer mt-1 border border-transpartent hover:border-chock hover:bg-chock-dark hover:text-chock "
                             @click="processPayment"
                             :disabled="paymentProcessing"
                             v-text="paymentProcessing ? 'Processing' : 'Pay Now'"
