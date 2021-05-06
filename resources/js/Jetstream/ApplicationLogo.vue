@@ -1,4 +1,4 @@
 <template>
     
-    <img src="images/logo/chockLogo.png" alt="">
+    <img src="images/logo/chockShopLogoDefalutBrown.png" alt="">
 </template>
