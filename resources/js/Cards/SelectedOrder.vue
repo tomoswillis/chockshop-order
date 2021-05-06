@@ -1,16 +1,16 @@
 <template>
-<div>
+<div v-if="liveProduct">
     
-<h1 class="font-chockshop text-xl text-center">{{data.user.name}}</h1>
+<h1 class="font-chockshop text-xl text-center">{{liveProduct.user.name}}</h1>
             <div class="px-6 py-4 mx-auto flex flex-col items-center">
-              <status :data="data.status.name"/>
+              <status :status="liveProduct.status.name"/>
             </div>
-            <p class="text-center text-slate-light">{{data.transaction_id}}</p>
+            <p class="text-center text-slate-light">{{liveProduct.transaction_id}}</p>
             <div class="flex justify-between text-sm text-slate-light mt-5">
                 <p>Products</p>
                 <p>Quantity</p>
             </div>
-            <div v-for="product in data.products" :key="product.id">
+            <div v-for="product in liveProduct.products" :key="product.id">
                 <div class="flex justify-between w-full my-2">
                     <h3>{{product.name}}</h3>
                     <p>{{product.pivot.quantity}}</p>
@@ -21,7 +21,7 @@
             <div>
                 <div class="flex justify-between my-5">
                     <h1 class="">Total</h1>
-                    <p class="font-bold">{{total(data.total)}}</p>
+                    <p class="font-bold">{{total(liveProduct.total)}}</p>
                 </div>
                 
             </div>
@@ -31,8 +31,8 @@
                     <button class="w-36 px-3 py-1 mr-2 rounded bg-chock text-chock-text">
                         Edit
                     </button>
-                     <inertia-link preserve-scroll :href="route('order.approve', data.id )" method="post" @click='$emit("update")'>
-                        <button class="w-36 px-3 py-1 ml-2 rounded bg-green-100 text-green-800" v-if="data.status.id == 1">
+                     <inertia-link preserve-scroll :href="route('order.approve', liveProduct.id )" method="post" @click='$emit("update")'>
+                        <button class="w-36 px-3 py-1 ml-2 rounded bg-green-100 text-green-800" v-if="liveProduct.status.id == 1">
                             Approve
                         </button>
                      </inertia-link>
@@ -44,6 +44,7 @@
 
 <script>
 import Status from '@/Elements/Status'
+import { watch } from '@vue/runtime-core';
 export default {
     components: {
         Status,
@@ -51,12 +52,17 @@ export default {
 
     data () {
         return {
-            
+            liveProduct: null,
+            status: this.product.status.name
         }
     },
 
+    mounted() {
+        this.updateLiveProduct();
+    },
+
     props: {
-        data: null,
+        product: null,
     },
 
     methods: {
@@ -64,6 +70,17 @@ export default {
                 item = (item / 100);
                 return item.toLocaleString('en-uk', { style: 'currency', currency: 'GBP' });
             },
+
+        updateLiveProduct() {
+            
+        }
+    },
+
+    watch: {
+        product(newval) {
+            this.liveProduct = newval;
+        }, 
+      
     }
 }
 </script>

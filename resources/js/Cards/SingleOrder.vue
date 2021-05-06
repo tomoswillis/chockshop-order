@@ -10,7 +10,7 @@
             
         </div>
         <div class="px-6 py-4 whitespace-nowrap">
-            <status :data="this.data.status.name"/>
+            <status :status="this.data.status.name"/>
         </div>
         <div>
             <p class="font-bold text-white w-2/12">{{total(this.data.total)}}</p>
