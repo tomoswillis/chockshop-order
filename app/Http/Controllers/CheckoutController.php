@@ -58,20 +58,20 @@ class CheckoutController extends Controller
             $request->session()->flash('flash.banner', 'Oops that has not worked. It is problem on our end, we are on it!');
             $request->session()->flash('flash.bannerStyle', 'danger');
 
-            return Redirect::back();
+            
         }
 
         Mail::to($user)->send(new OrderReceived($items));
-            
-            $order->load('products');
+        
+        $order->load('products');
 
-            $cart = new ProductController;
-            $cart->destroyCart();
+        $cart = new ProductController;
+        $cart->destroyCart();
 
-            $request->session()->flash('flash.banner', 'Your order has been recieved, Please check your emails!');
-            $request->session()->flash('flash.bannerStyle', 'success');
+        $request->session()->flash('flash.banner', 'Your order has been received, Please check your emails!');
+        $request->session()->flash('flash.bannerStyle', 'success');
 
-            return Redirect::back();
+      return Redirect::route('products.index');
 
     }
 }
