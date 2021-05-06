@@ -18764,9 +18764,7 @@ __webpack_require__.r(__webpack_exports__);
       isActive: false
     };
   },
-  mounted: function mounted() {
-    // this.update(this.cart.totalQty);
-    this.currentCartTotal(this.cart.cartTotal);
+  mounted: function mounted() {// this.update(this.cart.totalQty);
   },
   props: {
     product: Array,
