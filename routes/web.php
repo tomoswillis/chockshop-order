@@ -42,9 +42,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('checkout', CheckoutController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('myorders', MyOrdersController::class);
-    Route::post('approve/{id}', [
-        'uses' => 'App\Http\Controllers\OrderController@approve',
-        'as' => 'order.approve',
+    Route::post('approve/{id}/{status}', [
+        'uses' => 'App\Http\Controllers\OrderController@updateStatus',
+        'as' => 'order.updateStatus',
         ]);
     
     Route::post('add-to-cart/{id}', [
