@@ -31,7 +31,7 @@
                     <button class="w-36 px-3 py-1 mr-2 rounded bg-chock text-chock-text">
                         Edit
                     </button>
-                     <inertia-link preserve-scroll :href="route('order.approve', liveProduct.id )" method="post" @click='$emit("update")'>
+                     <inertia-link preserve-scroll :href="route('order.updateStatus', [liveProduct.id, 2] )" method="post" @click='$emit("update")'>
                         <button class="w-36 px-3 py-1 ml-2 rounded bg-green-100 text-green-800" v-if="liveProduct.status.id == 1">
                             Approve
                         </button>

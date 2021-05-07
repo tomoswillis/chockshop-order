@@ -10,6 +10,7 @@ export default {
         return {
             approved: false,
             pending: false,
+            cancelled: false,
         }
     },
 
@@ -23,14 +24,19 @@ export default {
 
     methods: {
         statusValue: function(e){
+            this.approved = false;
+            this.pending = false;
+            this.cancelled = false;
+
             switch (e) {
                 case 'Approved':
                     this.approved = true;
-                    this.pending = false;
                     break;
                 case 'Pending':
                     this.pending = true;
-                    this.approved = false;
+                    break;
+                case 'Cancelled':
+                    this.cancelled = true;
                     break;
                 default:
                 return console.log('unknown');
@@ -50,6 +56,7 @@ export default {
             return {
                 approved: this.approved,
                 pending: this.pending,
+                cancelled: this.cancelled,
             }
         },
     }
