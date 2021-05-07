@@ -34,25 +34,34 @@ class OrderController extends Controller
         return  Redirect::route('orders.index');
     }
    
-    public function approve(Request $request, $id)
-    {
-       
+    public function updateStatus(Request $request, $id, $status)
+    {   
         $order = Order::find($id);
-        $order->status_id = '2';
-        $order->save();
 
-        $userId = $order->user_id;
-        $user = User::find($userId);
-        $user = [
-            'name' => $user->name,
-            'email' => $user->email,
-        ];
+        if ($status == 2) {
+            $order->status_id = '2';
+            $order->save();
 
-        Mail::to($user['email'])->send(new OrderApproved($order));
+            $userId = $order->user_id;
+            $user = User::find($userId);
+            $user = [
+                'name' => $user->name,
+                'email' => $user->email,
+            ];
 
-        $request->session()->flash('flash.banner', 'Order Updated');
-        $request->session()->flash('flash.bannerStyle', 'success');
+            Mail::to($user['email'])->send(new OrderApproved($order));
 
+            $request->session()->flash('flash.banner', 'Order Updated');
+            $request->session()->flash('flash.bannerStyle', 'success');
+
+        } elseif ($status == 4 ){
+            $order->status_id = '4';
+            $order->save();
+
+            $request->session()->flash('flash.banner', 'Order has been cancelled');
+            $request->session()->flash('flash.bannerStyle', 'danger');
+        }
+       
         return  Redirect::back();
     }
     
