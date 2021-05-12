@@ -15,8 +15,8 @@ export default {
     },
 
     mounted (){
-                this.statusValue(this.status);
-            },
+        this.statusValue(this.status);
+    },
 
     props: {
         status: String,
