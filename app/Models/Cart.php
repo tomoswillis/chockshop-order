@@ -18,7 +18,7 @@ class Cart
         }
     }
 
-    public function add($item, $id) 
+    public function add($item, $id, $qty) 
     {
         $storedItem = [
             'qty' => 0,
@@ -30,12 +30,27 @@ class Cart
                 $storedItem = $this->items[$id];
             }
         }
+
         
-        $storedItem['qty']++;
+        
+        $storedItem['qty'] += $qty;
+        
         $storedItem['price'] = $item->price * $storedItem['qty'];
+        
         $this->items[$id] = $storedItem;
-        $this->totalQty++;
-        $this->totalPrice += $item->price;
+        $this->totalQty += $qty;
+        $this->totalPrice += $item->price * $qty;
+    }
+
+    public function remove($id) {
+        if(is_integer($id)) {
+            if (array_key_exists($id, $this->items)){
+                $this->totalPrice -= $this->items[$id]['price'] ;
+                $this->totalQty -= $this->items[$id]['qty'];
+                unset($this->items[$id]);
+            }
+        }
+       
     }
 
 }

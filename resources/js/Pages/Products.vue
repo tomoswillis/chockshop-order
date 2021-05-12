@@ -54,7 +54,7 @@
 
         mounted(){
             // this.update(this.cart.totalQty);
-
+           this.currentCartTotal(this.cart.cartTotal);
         },
                 
 

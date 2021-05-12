@@ -1,7 +1,7 @@
 <template>
     <app-layout>
          <div class="w-full  checkoutImg relative">
-            <div class=" w-11/12 mx-auto place-content-center flex md:flex-col lg:flex-row glassClear p-24" >
+            <div class=" w-11/12 mx-auto place-content-center flex md:flex-col lg:flex-row glassClear p-24 min-h-screen" >
              <div v-if="!cart" class="w-2/3 self-center glass">
                 <h1 class=" text-2xl text-white font-chockshop text-center my-8"> Your cart is empty </h1>
             </div>
@@ -10,6 +10,9 @@
                     <p class="text-white text-sm">You have {{cart.totalQty}} items in your cart</p>
                     
 <hr class="mt-5 w-3/4">
+                    <div class="mt-12">
+                        <inertia-link :href="route('clear.cart')" method="post"  class="bg-chock align-center w-full rounded-xl font-bold py-2  px-5 text-chock-text text-sm  cursor-pointer border border-transpartent hover:border-chock hover:bg-chock-dark hover:text-chock">Clear Basket</inertia-link>
+                    </div>
                     <div v-for="item in cart.items" :key="item.id"  class="flex items-center justify-around my-5 glass  rounded-xl p-1">
                         <div class="w-24 rounded-2xl border m-5 border-slate-light">
                             <img :src="item.item.product_hero_image" alt="">
@@ -25,9 +28,11 @@
                         <div>
                             <p class="font-bold text-white" v-text="total(item.item.price)"></p>
                         </div>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash text-white"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                        </div>
+                        <inertia-link v-if="item.item.id" method="Post" :href="route('product.removeFromCart', item.item.id )" as="button" >
+                            <div class="hover:bg-red-300 p-3 rounded hover:text-red-900 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </div>
+                        </inertia-link>
                     </div>
                     
                 </div>
@@ -162,6 +167,8 @@
                 return item.toLocaleString('en-uk', { style: 'currency', currency: 'GBP' });
             },
 
+            
+
             async processPayment() {
                 this.paymentProcessing = true;
                 const {paymentMethod, error} = await this.stripe.createPaymentMethod(
@@ -191,5 +198,10 @@
                 }
             }
         },
+        computed: {
+            idlog(id) {
+                console.log(id);
+            },
+        }
     }
 </script>
