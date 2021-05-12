@@ -47,9 +47,14 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'order.updateStatus',
         ]);
     
-    Route::post('add-to-cart/{id}', [
+    Route::post('add-to-cart/{id}/{quantity}', [
         'uses' => 'App\Http\Controllers\ProductController@addToCart',
         'as' => 'product.addToCart',
+        ]);
+    
+    Route::post('remove-from-cart/{id}', [
+        'uses' => 'App\Http\Controllers\ProductController@removeFromCart',
+        'as' => 'product.removeFromCart',
         ]);
 
 
