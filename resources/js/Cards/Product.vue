@@ -16,7 +16,7 @@
                 </div>    
                 <div class="flex justify-between items-center mt-2 ">
                     <div>
-                        <p>£{{item.price/100}}</p>
+                        <p class="font-bold">£{{item.price/100}}</p>
                     </div>
                     <div class="relative">
                         <div class="flex text-white">

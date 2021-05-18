@@ -54,10 +54,18 @@
                 <p>{{item.pivot.quantity}}</p>
             </div>
             <div>
-                <p class="font-bold text-white" v-text="item.price"></p>
+                <p class="font-bold text-white" >£{{item.price/100}}</p>
             </div>
         </div>
-    
+        <hr class="my-2"> 
+        <div class="flex w-full justify-between px-3">
+            <div>Total</div>
+            <div class="flex pr-3">
+                <div class="">{{totalItems(selected.products)}} items</div>
+                <div class="ml-5 font-bold">{{totalCost(selected.total)}}</div>
+            </div>
+            
+        </div>
     </div>
 </div>
 </template>
@@ -89,6 +97,15 @@ export default {
 
 
     methods: {
+        totalItems(e) {
+            const totalArray = e.map(x => x.pivot.quantity);
+            return this.total = totalArray.reduce((a, b) => a + b, 0);
+           },
+
+           totalCost(item)    {
+                item = (item / 100);
+                return item.toLocaleString('en-uk', { style: 'currency', currency: 'GBP' });
+            },
        
            statusValue: function(e){
                this.approved = false;
@@ -117,6 +134,8 @@ export default {
         },
     },
 
+    
+
     computed: {
         statusClasses: function() {
             return {
@@ -124,7 +143,10 @@ export default {
                 pending: this.pending,
             }
         },
-    }
+       
+    },
+
+
 }
 </script>
 

@@ -1,11 +1,11 @@
 <template>
 <div v-if="liveProduct">
-    
 <h1 class="font-chockshop text-xl text-center">{{liveProduct.user.name}}</h1>
             <div class="px-6 py-4 mx-auto flex flex-col items-center">
               <status :status="liveProduct.status.name"/>
             </div>
-            <p class="text-center text-slate-light">{{liveProduct.transaction_id}}</p>
+            <h2 class="font-bold text-xs text-chock">Order id: {{liveProduct.id}}</h2>    
+<p class=" text-slate-light text-xs mb-3">Transaction id: {{liveProduct.transaction_id}}</p>   
             <div class="flex justify-between text-sm text-slate-light mt-5">
                 <p>Products</p>
                 <p>Quantity</p>
