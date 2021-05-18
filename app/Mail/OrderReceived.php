@@ -12,6 +12,8 @@ class OrderReceived extends Mailable
     use Queueable, SerializesModels;
 
     public $orderedItems;
+    public $order;
+    
     // public $totalCost;
 
     /**
@@ -19,10 +21,11 @@ class OrderReceived extends Mailable
      *
      * @return void
      */
-    public function __construct($orderedItems)
+    public function __construct($orderedItems, $order)
     {
-
+        
         // $this->$totalCost;
+        $this->order   = $order;
         $this->orderedItems = $orderedItems;
     }
 
@@ -33,6 +36,7 @@ class OrderReceived extends Mailable
      */
     public function build()
     {
+        
         return $this->markdown('emails.received');
     }
 }

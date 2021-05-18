@@ -38,7 +38,7 @@ class ProductTableSeeder extends Seeder
             //     'product_hero_image' => '',
             //     'product_title_image' => '',
             //     'description' => '',
-            //     'price' => 0.01,
+            //     'price' => 105,
             // ],
             
         ];

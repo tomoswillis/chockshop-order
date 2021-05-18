@@ -3,16 +3,14 @@
 
 Order Id: {{$order->id}}
 
+@component('mail::panel')
+Please contact us if you **did not** make this order. 
+@endcomponent
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => 'http://chockshop-order.test/myorders/'.$order->id])
 View Order
 @endcomponent
 
----
-
-Please contact us if you **did not** make this order. 
-
----
 
 Thanks,<br>
 {{ config('app.name') }}

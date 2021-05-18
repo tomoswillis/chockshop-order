@@ -26,6 +26,16 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show(Request $request, $filter)
+    {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return Inertia::render('Orders', [
+            'orders' => Order::with(['user:id,name,email', 'products:id,name', 'status:id,name'])->where('status_id', $filter)->get(),
+            'status-list' => Status::all(),
+        ]);
+    }
+
 
     public function update(Request $request)
     {

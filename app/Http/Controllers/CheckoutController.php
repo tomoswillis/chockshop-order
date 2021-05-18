@@ -61,7 +61,7 @@ class CheckoutController extends Controller
             
         }
 
-        Mail::to($user)->send(new OrderReceived($items));
+        Mail::to($user)->send(new OrderReceived($items, $order));
         
         $order->load('products');
 
