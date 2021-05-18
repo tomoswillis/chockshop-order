@@ -15,7 +15,7 @@
             
         </div>
 
-        <div class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative min-h-screen">
             <div v-for="product in product" :key="product.id">
                 <product :item="product"/>
             </div>
@@ -47,7 +47,7 @@
 
         data() {
             return{
-                cartTotal: 0,
+                // cartTotal: 0,
                 isActive: false,
             }
         },
