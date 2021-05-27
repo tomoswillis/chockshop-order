@@ -1,129 +1,138 @@
 <template>
-    <app-layout>
-
-<div class="pt-24"></div>
- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
- <h1 class="text-chock font-chockshop text-2xl">Chock Shop Orders</h1>
-    <div class="w-full p-5">
+  <app-layout>
+    <div class="pt-24"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-chock font-chockshop text-2xl">Chock Shop Orders</h1>
+      <div class="w-full p-5">
         <h3 class="text-white text-sm">Filter By</h3>
         <div class="flex mt-3 w-1/3 justify-around">
-            <inertia-link  method="Get" href="/orders" as="button" >
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-chock text-chock-dark hover:bg-chock-dark hover:text-chock">
-                    View All
-                </span>
-            </inertia-link>
-            <inertia-link  method="get" :href="route('orders.show', 2 )" as="button" >
-                <span class="approved hover:bg-green-500 hover:text-white">
-                    Approved
-                </span>
-            </inertia-link>
-             <inertia-link  method="get" :href="route('orders.show', 1 )" as="button" >
-                 <span class="pending hover:bg-blue-500 hover:text-white">
-                    Pending
-                </span>
-            </inertia-link>
-            <inertia-link  method="get" :href="route('orders.show', 4 )" as="button" >
-                 <span class="cancelled hover:bg-red-500 hover:text-white">
-                    Cancelled
-                </span>
-            </inertia-link>
+          <inertia-link method="Get" href="/orders" as="button">
+            <span
+              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-chock text-chock-dark hover:bg-chock-dark hover:text-chock"
+            >
+              View All
+            </span>
+          </inertia-link>
+          <inertia-link
+            method="get"
+            :href="route('orders.show', 2)"
+            as="button"
+          >
+            <span class="approved hover:bg-green-500 hover:text-white">
+              Approved
+            </span>
+          </inertia-link>
+          <inertia-link
+            method="get"
+            :href="route('orders.show', 1)"
+            as="button"
+          >
+            <span class="pending hover:bg-blue-500 hover:text-white">
+              Pending
+            </span>
+          </inertia-link>
+          <inertia-link
+            method="get"
+            :href="route('orders.show', 4)"
+            as="button"
+          >
+            <span class="cancelled hover:bg-red-500 hover:text-white">
+              Cancelled
+            </span>
+          </inertia-link>
         </div>
-    </div>
-    <hr class="my-5">
-<!-- <select v-model="filter">
+      </div>
+      <hr class="my-5" />
+      <!-- <select v-model="filter">
     <option value="all">All</option>
     <option value="pending">Pending</option>
 </select>  -->
-    <div class="w-full  flex min-h-screen relative ">
+      <div class="w-full flex min-h-screen relative">
         <div class="glass w-5/12 py-6">
-            <single-order 
-                v-for="order in orders" 
-                :key="order.id" 
-                :data="order" 
-                v-on:update="updatetest()"
-                @click="updateSelected(order)"
-                class="mx-2 rounded border-b border-t border-transparent hover:border-chock cursor-pointer "/>
+          <single-order
+            v-for="order in orders"
+            :key="order.id"
+            :data="order"
+            v-on:update="updatetest()"
+            @click="updateSelected(order)"
+            class="mx-2 rounded border-b border-t border-transparent hover:border-chock cursor-pointer"
+          />
         </div>
 
-        <div class="w-5/12 text-white p-5 mx-auto rounded fixed inset-x-2/4 glass" v-if="this.test != null">
-            <selected-order :product="this.test"/>
+        <div
+          class="w-5/12 text-white p-5 mx-auto rounded fixed inset-x-2/4 glass"
+          v-if="this.test != null"
+        >
+          <selected-order :product="this.test" />
         </div>
+      </div>
     </div>
- </div>
-    </app-layout>
+  </app-layout>
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
-    import SingleOrder from '@/Cards/SingleOrder'
-    import SelectedOrder from '@/Cards/SelectedOrder'
-    import Status from '@/Elements/Status'
+import AppLayout from "@/Layouts/AppLayout";
+import SingleOrder from "@/Cards/SingleOrder";
+import SelectedOrder from "@/Cards/SelectedOrder";
+import Status from "@/Elements/Status";
 
-    export default {
-        components: {
-            AppLayout,
-            SingleOrder,
-            SelectedOrder,
-            Status,
-        },
-        props: {
-            orders: null,
-        },
+export default {
+  components: {
+    AppLayout,
+    SingleOrder,
+    SelectedOrder,
+    Status,
+  },
+  props: {
+    orders: null,
+  },
 
-       
-        data() {
-            return {
-               test: null,
-               newList: this.orders,
-               filter: 'all',
-            }
-        },
-        
-        methods: {
-            updateSelected(order) {
-              return this.test = order;
-            },
+  data() {
+    return {
+      test: null,
+      newList: this.orders,
+      filter: "all",
+    };
+  },
 
-            total(item) {
-                item = (item / 100);
-                return item.toLocaleString('en-uk', { style: 'currency', currency: 'GBP' });
-            },
-            
-            filterOrders() {
-                switch (this.filter) {
-                    case 'all':
-                        this.newList = this.orders;
-                        break;
-                    case 'pending':
-                        this.newList = this.orders.filter(order => order.status.id == 1);
-                        break;
-                    default:
-                return console.log('unknown');
-                }
-            }, 
+  methods: {
+    updateSelected(order) {
+      return (this.test = order);
+    },
 
-            updatetest() {
-                this.newList = this.orders;
-                console.log(hello);
-            }
-        },
+    total(item) {
+      item = item / 100;
+      return item.toLocaleString("en-uk", {
+        style: "currency",
+        currency: "GBP",
+      });
+    },
 
-        watch: {
-            filter(newvar) {
-                this.filterOrders(newvar)
-            },
+    filterOrders() {
+      switch (this.filter) {
+        case "all":
+          this.newList = this.orders;
+          break;
+        case "pending":
+          this.newList = this.orders.filter((order) => order.status.id == 1);
+          break;
+        default:
+          return console.log("unknown");
+      }
+    },
 
-            
+    updatetest() {
+      this.newList = this.orders;
+      console.log(hello);
+    },
+  },
 
-        },
+  watch: {
+    filter(newvar) {
+      this.filterOrders(newvar);
+    },
+  },
 
-        computed: {
-            
-
-                       
-
-           
-        }
-    }
+  computed: {},
+};
 </script>

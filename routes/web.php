@@ -34,44 +34,40 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
-    })->name('dashboard');
+})->name('dashboard');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('products', ProductController::class);
     Route::resource('users', UsersController::class);
     Route::resource('checkout', CheckoutController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('myorders', MyOrdersController::class);
 
-    
+
 
     Route::post('approve/{id}/{status}', [
         'uses' => 'App\Http\Controllers\OrderController@updateStatus',
         'as' => 'order.updateStatus',
-        ]);
-    
+    ]);
+
     Route::post('add-to-cart/{id}/{quantity}', [
         'uses' => 'App\Http\Controllers\ProductController@addToCart',
         'as' => 'product.addToCart',
-        ]);
-    
+    ]);
+
     Route::post('remove-from-cart/{id}', [
         'uses' => 'App\Http\Controllers\ProductController@removeFromCart',
         'as' => 'product.removeFromCart',
-        ]);
+    ]);
 
 
     Route::post('clearCart', [
         'uses' => 'App\Http\Controllers\ProductController@destroyCart',
         'as' => 'clear.cart',
-        ]);
+    ]);
 
     Route::post('purchase', [
         'uses' => 'App\Http\Controllers\CheckoutController@purchase',
         'as' => 'checkout.create',
-        ]);
+    ]);
 });
-
-
-
-
