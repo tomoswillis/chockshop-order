@@ -56,18 +56,19 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id, $qty);
         $request->session()->put('cart', $cart);
-    
+
         return  Redirect::route('products.index');
     }
 
-    public function removeFromCart(Request $request, $id) {
+    public function removeFromCart(Request $request, $id)
+    {
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->remove($product->id);
 
         $request->session()->put('cart', $cart);
-    
+
         return  Redirect::back();
     }
 

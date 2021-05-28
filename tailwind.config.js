@@ -27,6 +27,9 @@ module.exports = {
                     DEFAULT: '#151515' 
                 },
             },
+            width: {
+                '104': '27rem',
+            }
         },
     },
 

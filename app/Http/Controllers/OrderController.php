@@ -39,13 +39,13 @@ class OrderController extends Controller
 
     public function update(Request $request)
     {
-        
+
 
         return  Redirect::route('orders.index');
     }
-   
+
     public function updateStatus(Request $request, $id, $status)
-    {   
+    {
         $order = Order::find($id);
 
         if ($status == 2) {
@@ -63,18 +63,17 @@ class OrderController extends Controller
 
             $request->session()->flash('flash.banner', 'Order Updated');
             $request->session()->flash('flash.bannerStyle', 'success');
-
-        } elseif ($status == 4 ){
+        } elseif ($status == 4) {
             $order->status_id = '4';
             $order->save();
 
             $request->session()->flash('flash.banner', 'Order has been cancelled');
             $request->session()->flash('flash.bannerStyle', 'danger');
         }
-       
+
         return  Redirect::back();
     }
-    
+
     public function destroy(Order $order)
     {
         $order->delete();
