@@ -1,7 +1,7 @@
 <template>
   <div class="bg-slate">
     <div class="max-w-7xl mx-auto">
-      <div class="mb-12 px-5 lg:grid-cols-2 lg:grid gap-10 lg:items-center">
+      <div class="px-5 lg:grid-cols-2 lg:grid gap-10 lg:items-center">
         <div class="col-start-2"></div>
 
         <div class="col-start-1">
@@ -27,7 +27,6 @@
             content in the media, through shows such as The Great British Bake
             Off helping to raise the profile of high quality baked goods.
           </p>
-          <chock-shop-button class="mt-4"> Chock Shop Site </chock-shop-button>
         </div>
       </div>
     </div>

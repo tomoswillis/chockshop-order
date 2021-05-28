@@ -31,6 +31,44 @@
 
 }
 
+
+p::selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
+
+p::-moz-selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
+h1::selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
+h1::-moz-selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
+h2::selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
+h2::-moz-selection {
+    background: rgba(252, 165, 165);
+    color: white;
+
+}
+
 #id {
     position: relative;
 }
@@ -250,7 +288,18 @@ hr {
     content: "";
     background-color: rgb(21, 21, 21);
     position: absolute;
-    top: 72%;
+    top: 70%;
+    bottom: 0%;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.homeHeroCta::before {
+    content: "";
+    background-color: rgb(178, 151, 123);
+    position: absolute;
+    top: 78%;
     bottom: 0%;
     right: 0;
     left: 0;
@@ -388,6 +437,12 @@ hr {
         grid-area: 5 / 8 / 9 / 12;
 
         backdrop-filter: blur(10px);
+    }
+
+    .bgCreamAndBlack::before {
+
+        top: 72%;
+
     }
 }
 

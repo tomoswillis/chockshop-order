@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex h-full">
     <div class="bg-chock-dark w-1/2 mr-1 rounded-tl-3xl mb-16">
       <img class="object-cover h-full w-full rounded-tl-3xl" :src="imageOne" />
     </div>

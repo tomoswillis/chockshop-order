@@ -32,6 +32,13 @@
   <Header />
   <dual-image-section class="pt-20 relative" />
   <marketing-ops />
+
+  <hero-CTA
+    class="bg-slate py-24 homeHeroCta z-10"
+    :buttonText="'View the package and support'"
+    :message="'our support means you get off to the best start'"
+    :img="'images/franchise/Greg.jpeg'"
+  />
 </template>
 
 <script>
@@ -39,6 +46,7 @@ import Header from "@/Sections/Header";
 import DualImageSection from "@/Sections/DualImageSection";
 import MarketingOps from "@/Sections/MarketingOps";
 import WhatMakesChockShopDifferent from "@/Sections/WhatMakesChockShopDifferent.vue";
+import HeroCTA from "@/Elements/HeroCTA.vue";
 
 export default {
   components: {
@@ -46,6 +54,7 @@ export default {
     DualImageSection,
     MarketingOps,
     WhatMakesChockShopDifferent,
+    HeroCTA,
   },
   props: {
     canLogin: Boolean,
