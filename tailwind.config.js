@@ -24,6 +24,7 @@ module.exports = {
                 },
                 slate: {
                     light: '#afafaf',
+                    input: '#343434',
                     DEFAULT: '#151515' 
                 },
             },

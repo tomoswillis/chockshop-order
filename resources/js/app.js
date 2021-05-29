@@ -9,6 +9,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 
 
+
 const el = document.getElementById('app');
 
 createApp({

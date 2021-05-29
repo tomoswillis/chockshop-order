@@ -337,6 +337,61 @@ hr {
     backdrop-filter: blur(10px);
 }
 
+.bg-blur-chock {
+    background-color: rgba(56, 56, 56, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.input-user {
+    background: url("../../public/images/inputIcons/user.svg") no-repeat;
+    background-position: 10px;
+    background-color: #343434;
+    padding-left: 35px;
+    transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+}
+
+.input-phone {
+    background: url("../../public/images/inputIcons/smartphone.svg") no-repeat;
+    background-position: 10px;
+    background-color: #343434;
+    padding-left: 35px;
+    transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+}
+
+.input-email {
+    background: url("../../public/images/inputIcons/mail.svg") no-repeat;
+    background-position: 10px;
+    background-color: #343434;
+    padding-left: 35px;
+    transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+}
+
+.input-contact:focus {
+    background-position-x: -100px;
+    padding-left: 5px;
+    transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -webkit-appearance: none;
+    outline: none;
+    @apply border border-white;
+}
+
+.input-contact:active {
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.input-contact:focus-visible {
+    outline: none;
+}
+
+.input-contact {
+    background-color: #343434;
+    outline: none;
+}
+
 
 @media (min-width: 768px) {
 
