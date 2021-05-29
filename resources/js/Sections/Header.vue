@@ -1,5 +1,6 @@
 <template>
   <div class="bg-chock">
+    <!-- <contact-form /> -->
     <div class="grid-container">
       <div class="Blobs hidden lg:block bg-slate"></div>
       <div class="Slate bg-black md:bg-slate z-0"></div>
@@ -59,11 +60,13 @@
 
 <script>
 import chockShopButton from "@/Elements/ChockShopButton";
+import ContactForm from "@/Cards/ContactForm.vue";
 import gsap from "gsap";
 
 export default {
   components: {
     chockShopButton,
+    ContactForm,
   },
   setup() {
     const beforeTitle = (el) => {
@@ -91,7 +94,17 @@ export default {
         duration: 1.2,
       });
     };
-    return { beforeTitle, titleEnter, beforeBrownieImage, brownieImageEnter };
+    return {
+      beforeTitle,
+      titleEnter,
+      beforeBrownieImage,
+      brownieImageEnter,
+    };
+  },
+  data() {
+    return {
+      showform: false,
+    };
   },
 };
 </script>

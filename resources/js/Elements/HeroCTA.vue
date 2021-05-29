@@ -3,7 +3,7 @@
     <div
       class="h-64 w-64 z-10 transform translate-y-14 md:translate-y-0 md:translate-x-10 lg:w-80 lg:h-80"
     >
-      <img id="image" class="" :src="img" alt="hero image" />
+      <img id="HeroCtaImage" class="" :src="img" alt="hero image" />
     </div>
     <div
       class="h-80 w-80 border-4 border-chock flex flex-col justify-center text-center p-5 lg:p-10 md:w-96 md:h-96 lg:w-104 lg:h-104 relative"
@@ -14,7 +14,7 @@
         alt=""
       />
       <h2
-        id="message"
+        id="HeroCtaMessage"
         class="text-white font-chockshop text-2xl md:text-3xl uppercase"
         v-text="message"
       />
@@ -37,7 +37,7 @@ export default {
   mounted() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
-      "#message",
+      "#HeroCtaMessage",
       {
         y: 100,
         opacity: 0,
@@ -45,14 +45,14 @@ export default {
       {
         y: 0,
         opacity: 1,
-        scrollTrigger: "#message",
+        scrollTrigger: "#HeroCtaMessage",
         duration: 1,
       }
     );
 
     if (screen.width >= 768) {
       gsap.fromTo(
-        "#image",
+        "#HeroCtaImage",
         {
           x: 100,
           opacity: 0,
@@ -60,7 +60,7 @@ export default {
         {
           x: 0,
           opacity: 1,
-          scrollTrigger: "#image",
+          scrollTrigger: "#HeroCtaImage",
           duration: 4,
           duration: 1.5,
           ease: "power2.inOut",
@@ -68,7 +68,7 @@ export default {
       );
     } else {
       gsap.fromTo(
-        "#image",
+        "#HeroCtaImage",
         {
           y: -100,
           opacity: 0,
@@ -76,7 +76,7 @@ export default {
         {
           y: 0,
           opacity: 1,
-          scrollTrigger: "#image",
+          scrollTrigger: "#HeroCtaImage",
           duration: 1.2,
         }
       );
