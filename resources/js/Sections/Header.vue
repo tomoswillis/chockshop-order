@@ -1,6 +1,7 @@
 <template>
   <div class="bg-chock">
     <!-- <contact-form /> -->
+
     <div class="grid-container">
       <div class="Blobs hidden lg:block bg-slate"></div>
       <div class="Slate bg-black md:bg-slate z-0"></div>
@@ -36,7 +37,7 @@
             class="absolute bg-chock h-full transform translate-x-full w-full z-10"
           />
           <img
-            class="w-full image md:rounded-bl-3xl shadow-chock-header filter-brightness-25 md:filter-brightness-50 lg:filter-brightness-100"
+            class="w-full h-full image md:rounded-bl-3xl shadow-chock-header filter-brightness-25 md:filter-brightness-50 object-cover lg:filter-brightness-100"
             src="images/franchise/brownieHeaderImage.png"
             alt="Hero image"
           />
@@ -78,7 +79,7 @@ export default {
       gsap.to(el, {
         y: 0,
         opacity: 1,
-        duration: 1,
+        duration: 1.2,
       });
     };
 
@@ -91,7 +92,7 @@ export default {
       gsap.to(el, {
         translateX: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 1.5,
       });
     };
     return {
