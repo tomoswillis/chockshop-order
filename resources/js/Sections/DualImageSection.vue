@@ -67,7 +67,7 @@ export default {
         y: 0,
         opacity: 1,
         scrollTrigger: "#title",
-        duration: 1,
+        duration: 1.5,
       }
     );
   },
