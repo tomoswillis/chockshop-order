@@ -27,9 +27,10 @@ export default {
         opacity: 1,
         scrollTrigger: {
           trigger: "#imageOne",
-          start: "top, bottom",
-          end: "center, center",
+          start: "-50px, bottom",
+          end: "200px, center",
           scrub: true,
+          addClass: { targets: "#imageOne", className: "active" },
           // markers: true,
           toggleActions: "none none none none",
         },
@@ -48,8 +49,8 @@ export default {
         opacity: 1,
         scrollTrigger: {
           trigger: "#imageOne",
-          start: "top, bottom",
-          end: "center, center",
+          start: "-50px, bottom",
+          end: "200px, center",
           scrub: true,
           // markers: true,
           toggleActions: "none none none none",
