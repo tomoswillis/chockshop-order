@@ -11,9 +11,9 @@
 <script>
 export default {
   methods: {
-    foobar() {
-      document.getElementById("button").classList.add("bg-black");
-    },
+    // foobar() {
+    //   document.getElementById("button").classList.add("bg-black");
+    // },
   },
 };
 </script>
