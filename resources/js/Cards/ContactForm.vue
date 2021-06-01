@@ -5,7 +5,7 @@
       class="fixed bottom-0 w-screen h-screen z-50 p-5 flex items-end md:items-center lg:justify-center foobar"
     >
       <div
-        class="bg-blur-chock w-full rounded-xl px-5 pb-5 pt-16 relative lg:w-2/3"
+        class="bg-blur-chock w-full rounded-xl px-5 pb-5 pt-16 relative xl:w-1/3"
       >
         <i @click="contactLeave"
           ><img
