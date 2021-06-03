@@ -1,7 +1,5 @@
 <template>
   <div class="bg-chock">
-    <!-- <contact-form /> -->
-
     <div class="grid-container">
       <div class="Blobs hidden lg:block bg-slate"></div>
       <div class="Slate bg-black md:bg-slate z-0"></div>
@@ -61,13 +59,11 @@
 
 <script>
 import chockShopButton from "@/Elements/ChockShopButton";
-import ContactForm from "@/Cards/ContactForm.vue";
 import gsap from "gsap";
 
 export default {
   components: {
     chockShopButton,
-    ContactForm,
   },
   setup() {
     const beforeTitle = (el) => {
@@ -104,7 +100,7 @@ export default {
   },
   data() {
     return {
-      showform: false,
+      showform: true,
     };
   },
 };

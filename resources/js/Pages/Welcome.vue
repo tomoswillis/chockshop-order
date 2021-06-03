@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <contact-form /> -->
     <div
       class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
     >
@@ -36,6 +37,8 @@
     <Header />
     <dual-image-section class="pt-20 relative" />
     <marketing-ops />
+    <what-makes-chock-shop-different />
+    <earnings-potential />
     <hero-CTA
       class="bg-slate py-24 homeHeroCta z-10"
       :buttonText="'View the package and support'"
@@ -51,6 +54,8 @@ import DualImageSection from "@/Sections/DualImageSection";
 import MarketingOps from "@/Sections/MarketingOps";
 import WhatMakesChockShopDifferent from "@/Sections/WhatMakesChockShopDifferent.vue";
 import HeroCTA from "@/Elements/HeroCTA.vue";
+import EarningsPotential from "@/Sections/EarningsPotential";
+import ContactForm from "@/Cards/ContactForm.vue";
 
 export default {
   components: {
@@ -59,6 +64,8 @@ export default {
     MarketingOps,
     WhatMakesChockShopDifferent,
     HeroCTA,
+    EarningsPotential,
+    ContactForm,
   },
 
   props: {
@@ -69,3 +76,6 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+</style>
