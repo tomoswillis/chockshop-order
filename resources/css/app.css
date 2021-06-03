@@ -31,6 +31,9 @@
 
 }
 
+body {
+    overflow-x: hidden;
+}
 
 p::selection {
     background: rgba(252, 165, 165);
@@ -271,6 +274,7 @@ hr {
     }
 }
 
+
 .Blobs {
     grid-area: 1 / 7 / 7 / 12;
     background-image: url("../../public/images/bg/prod-bg-left.png"), url("../../public/images/bg/prod-bg-right.png");
@@ -407,16 +411,89 @@ hr {
 }
 
 
-.mOps-heart {
-    top: -25%;
+.mOps-heart-one {
+    top: -30%;
     transform: rotate(-27deg);
     left: 25%;
+    animation-name: scale-move;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.mOps-heart-two {
+    top: -35%;
+    transform: rotate(-27deg);
+    left: 30%;
+    animation-name: scale-move;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+.mOps-heart-three {
+    top: -36%;
+    transform: rotate(-27deg);
+    left: 60%;
+    animation-name: scale-move;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scale-move {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(500px);
+
+    }
+
+    25% {}
+
+    50% {
+        opacity: 1;
+
+    }
+
+    75% {}
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.wobbleAnimation {
+    animation-name: wobble;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes wobble {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 .mOps-raspberry {
     top: -20%;
     transform: rotate(-27deg);
     left: 60%;
+    opacity: 1;
 }
 
 .mOps-laid {
@@ -426,22 +503,106 @@ hr {
 }
 
 .mOps-flag-left {
-    top: -39%;
-    transform: rotate(deg);
-    left: 20%;
+    top: -30%;
+    transform: rotate(334deg);
+    left: 15%;
+    animation-name: flag-wobble-left;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 
 }
 
 .mOps-flag-right {
-    top: -39%;
-    transform: rotate(deg);
-    left: 75%;
+    top: -30%;
+    transform: rotate(26deg);
+    left: 82%;
+    animation-name: flag-wobble-right;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 
 }
 
+@keyframes flag-wobble-left {
+    0% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
 
+    25% {
+        transform-origin: bottom;
+        transform: rotate(-20deg);
+    }
 
+    50% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
 
+    75% {
+        transform-origin: bottom;
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes flag-wobble-right {
+    0% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform-origin: bottom;
+        transform: rotate(20deg);
+    }
+
+    50% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform-origin: bottom;
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform-origin: bottom;
+        transform: rotate(0deg);
+    }
+}
+
+.downArrow-animate {
+
+    animation-name: pulse-arrow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+
+@keyframes pulse-arrow {
+    0% {
+        transform: translateY(25px);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(50px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(25px);
+        opacity: 0.2;
+    }
+}
 
 @media (min-width: 768px) {
 
@@ -478,6 +639,21 @@ hr {
     .bgCreamAndBlack::before {
 
         top: 79%;
+
+    }
+
+    .mOps-flag-left {
+        top: -30%;
+
+        left: 35%;
+
+
+    }
+
+    .mOps-flag-right {
+        top: -30%;
+        transform: rotate(26deg);
+        left: 64%;
 
     }
 }
@@ -549,6 +725,19 @@ hr {
         top: 72%;
 
     }
+
+    .mOps-flag-left {
+        top: -6%;
+        left: 25%;
+    }
+
+
+    .mOps-flag-right {
+        top: -6%;
+        transform: rotate(26deg);
+        left: 73%;
+
+    }
 }
 
 @media (min-width: 1920px) {
@@ -580,5 +769,17 @@ hr {
         grid-area: 5 / 8 / 8 / 12;
 
         backdrop-filter: blur(10px);
+    }
+
+    .mOps-flag-left {
+        top: -20%;
+
+
+    }
+
+    .mOps-flag-right {
+        top: -20%;
+
+
     }
 }
