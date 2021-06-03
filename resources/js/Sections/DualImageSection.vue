@@ -32,9 +32,11 @@
               expanding the business through a franchise model.
             </span>
           </p>
-          <chock-shop-button class="mt-4 md:w-1/3">
-            Chock Shop Site
-          </chock-shop-button>
+          <a href="http://www.chockshop.co.uk">
+            <chock-shop-button class="mt-4 md:w-1/3">
+              Chock Shop Site
+            </chock-shop-button>
+          </a>
         </div>
       </div>
     </div>
