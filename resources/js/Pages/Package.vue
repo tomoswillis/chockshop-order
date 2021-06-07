@@ -33,16 +33,83 @@
         </template>
       </div>
     </div>
+    <!-- <div class="max-w-7xl mx-auto px-5 bg-chock text-white pt-5"> -->
+    <div class="grid-container text-white bg-chock pb-5 pt-5">
+      <div class="bg bg-slate"></div>
+
+      <div class="title z-10">
+        <h1 class="text-4xl md:text-7xl font-chockshop uppercase pl-5 md:p-0">
+          Your Role as a Franchisee
+        </h1>
+      </div>
+      <div class="text">
+        <p class="text-md leading-8 my-2 p-5 md:p-0">
+          The success of your business will depend largely on how effectively
+          and consistently you promote throughout your territory. All
+          franchisees will be responsible for local marketing within their
+          territories, with initial assistance coming from Head Office.
+          <br />
+          <br />
+          Brand awareness drives will be essential, and it will be up to
+          individuals to decide how much they invest in their chosen areas.
+          <br /><br />
+          We will guide you through the complexities of local marketing. Don’t
+          worry – we’ve been there and done it.
+        </p>
+      </div>
+      <div class="role-image w-full h-full bg-chock-dark rounded-bl-2xl z-0">
+        <img
+          src="images/franchise/your-role.png"
+          class="w-full h-full rounded-bl-xl object-cover filter-brightness-50"
+          alt=""
+        />
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="max-w-7xl mx-auto md:px-5 bg-chock text-white md:pt-5 p-5">
+      <div class="w-full h-1/3 bg-slate p-5">
+        <h1 class="text-4xl font-chockshop uppercase">
+          Your Role as a Franchisee
+        </h1>
+        <p class="text-md leading-8 my-2">
+          The success of your business will depend largely on how effectively
+          and consistently you promote throughout your territory. All
+          franchisees will be responsible for local marketing within their
+          territories, with initial assistance coming from Head Office.
+        </p>
+
+        <p class="text-md leading-8 my-2">
+          Brand awareness drives will be essential, and it will be up to
+          individuals to decide how much they invest in their chosen areas.
+        </p>
+
+        <p class="text-md leading-8 my-2">
+          We will guide you through the complexities of local marketing. Don’t
+          worry – we’ve been there and done it.
+        </p>
+      </div>
+    </div> -->
     <div class="max-w-7xl mx-auto px-5 bg-slate text-white pt-5">
-      <div>
-        <div class="lg:w-1/2">
+      <div class="md:flex">
+        <div class="md:w-1/2">
           <h2 class="text-4xl font-chockshop uppercase mb-5">
             Chock shop <br />Franchise Package
           </h2>
-          <p class="text-md leading-8">
+          <p class="text-md leading-8 lg:pr-2">
             Our franchise package offers all the training and support you need
             to help you get your business off the ground, including:
           </p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="flex h-full">
+            <div
+              class="bg-chock-dark w-1/2 mr-1 rounded-tl-3xl mb-16 h-96"
+            ></div>
+            <div
+              class="bg-chock-dark w-1/2 ml-1 rounded-br-3xl mt-16 h-96"
+            ></div>
+          </div>
         </div>
       </div>
 
@@ -279,6 +346,69 @@ export default {
 </script>
 
 <style scoped>
-.line {
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.1fr 1.4fr 3.3fr 0.1fr;
+  grid-template-rows: 0.4fr 1.1fr 1fr 1fr;
+  gap: 0px 0px;
+}
+
+.bg {
+  grid-area: 1 / 2 / 6 / 4;
+}
+
+.role-image {
+  grid-area: 2 / 3 / 5 / 5;
+}
+
+.title {
+  grid-area: 3 / 2 / 4 / 4;
+}
+
+.text {
+  grid-area: 5 / 2 / 6 / 4;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
+    grid-template-rows: 0.4fr 1.1fr 1fr 1fr;
+  }
+  .bg {
+    grid-area: 1 / 1 / 6 / 4;
+  }
+  .role-image {
+    grid-area: 2 / 3 / 5 / 6;
+  }
+}
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
+    grid-template-rows: 0.4fr 1.1fr 1fr 1fr 2fr;
+  }
+  .text {
+    grid-area: 4 / 3 / 6 / 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
+    grid-template-rows: 0.4fr 1.1fr 1fr 1fr 2fr;
+  }
+
+  .bg {
+    grid-area: 1 / 1 / 6 / 4;
+  }
+  .title {
+    grid-area: 3 / 2 / 4 / 4;
+  }
+
+  .text {
+    grid-area: 4 / 3 / 6 / 2;
+  }
+  .role-image {
+    grid-area: 2 / 3 / 5 / 6;
+  }
 }
 </style>
