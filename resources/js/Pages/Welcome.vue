@@ -1,6 +1,6 @@
 <template>
   <div>
-    <contact-form />
+    <!-- <contact-form /> -->
     <div
       class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
     >
@@ -33,6 +33,12 @@
           </inertia-link>
         </template>
       </div>
+      <inertia-link
+        href="/"
+        class="fixed top-0 right-left px-8 py-2 bg-chock-dark rounded-br-xl w-32 z-30"
+      >
+        <img src="images/logo/chockShopLogoDefalutBrown.png" alt="" />
+      </inertia-link>
     </div>
     <Header />
     <dual-image-section class="pt-20 relative" />
