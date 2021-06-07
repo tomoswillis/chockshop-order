@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <contact-form /> -->
+    <contact-form />
     <div
       class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
     >
@@ -45,6 +45,7 @@
       :message="'our support means you get off to the best start'"
       :img="'images/franchise/Greg.jpeg'"
     />
+    <Footer />
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import WhatMakesChockShopDifferent from "@/Sections/WhatMakesChockShopDifferent.
 import HeroCTA from "@/Elements/HeroCTA.vue";
 import EarningsPotential from "@/Sections/EarningsPotential";
 import ContactForm from "@/Cards/ContactForm.vue";
+import Footer from "@/Sections/Footer";
 
 export default {
   components: {
@@ -66,6 +68,7 @@ export default {
     HeroCTA,
     EarningsPotential,
     ContactForm,
+    Footer,
   },
 
   props: {
@@ -76,6 +79,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>
