@@ -18,7 +18,7 @@
         class="text-white font-chockshop text-2xl md:text-3xl uppercase"
         v-text="message"
       />
-      <chock-shop-button class="mt-5 md:mx-10">
+      <chock-shop-button :link="'packages'" class="mt-5 md:mx-10">
         {{ buttonText }}</chock-shop-button
       >
     </div>
