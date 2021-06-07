@@ -292,7 +292,7 @@ hr {
     content: "";
     background-color: rgb(21, 21, 21);
     position: absolute;
-    top: 70%;
+    top: 76%;
     bottom: 0%;
     right: 0;
     left: 0;
@@ -638,7 +638,7 @@ hr {
 
     .bgCreamAndBlack::before {
 
-        top: 79%;
+        top: 80%;
 
     }
 
