@@ -1,7 +1,7 @@
 <template>
   <div class="bg-slate">
     <div
-      class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 z-20"
+      class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 z-50"
     >
       <div
         v-if="canLogin"
@@ -32,64 +32,16 @@
           </inertia-link>
         </template>
       </div>
+
+      <inertia-link
+        href="/"
+        class="fixed top-0 right-left px-8 py-2 bg-chock-dark rounded-br-xl w-32"
+      >
+        <img src="images/logo/chockShopLogoDefalutBrown.png" alt="" />
+      </inertia-link>
     </div>
-    <!-- <div class="max-w-7xl mx-auto px-5 bg-chock text-white pt-5"> -->
-    <div class="grid-container text-white bg-chock pb-5 pt-5">
-      <div class="bg bg-slate"></div>
 
-      <div class="title z-10">
-        <h1 class="text-4xl md:text-7xl font-chockshop uppercase pl-5 md:p-0">
-          Your Role as a Franchisee
-        </h1>
-      </div>
-      <div class="text">
-        <p class="text-md leading-8 my-2 p-5 md:p-0">
-          The success of your business will depend largely on how effectively
-          and consistently you promote throughout your territory. All
-          franchisees will be responsible for local marketing within their
-          territories, with initial assistance coming from Head Office.
-          <br />
-          <br />
-          Brand awareness drives will be essential, and it will be up to
-          individuals to decide how much they invest in their chosen areas.
-          <br /><br />
-          We will guide you through the complexities of local marketing. Don’t
-          worry – we’ve been there and done it.
-        </p>
-      </div>
-      <div class="role-image w-full h-full bg-chock-dark rounded-bl-2xl z-0">
-        <img
-          src="images/franchise/your-role.png"
-          class="w-full h-full rounded-bl-xl object-cover filter-brightness-50"
-          alt=""
-        />
-      </div>
-    </div>
-    <!-- </div> -->
-
-    <!-- <div class="max-w-7xl mx-auto md:px-5 bg-chock text-white md:pt-5 p-5">
-      <div class="w-full h-1/3 bg-slate p-5">
-        <h1 class="text-4xl font-chockshop uppercase">
-          Your Role as a Franchisee
-        </h1>
-        <p class="text-md leading-8 my-2">
-          The success of your business will depend largely on how effectively
-          and consistently you promote throughout your territory. All
-          franchisees will be responsible for local marketing within their
-          territories, with initial assistance coming from Head Office.
-        </p>
-
-        <p class="text-md leading-8 my-2">
-          Brand awareness drives will be essential, and it will be up to
-          individuals to decide how much they invest in their chosen areas.
-        </p>
-
-        <p class="text-md leading-8 my-2">
-          We will guide you through the complexities of local marketing. Don’t
-          worry – we’ve been there and done it.
-        </p>
-      </div>
-    </div> -->
+    <packages-header />
     <div class="max-w-7xl mx-auto px-5 bg-slate text-white pt-5">
       <div class="md:flex">
         <div class="md:w-1/2">
@@ -206,14 +158,17 @@
       <text-with-card-right />
     </div>
   </div>
+  <Footer />
 </template>
 
 <script>
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextWithCardRight from "@/sections/TextWithCardRight";
+import Footer from "@/Sections/Footer";
+import PackagesHeader from "@/Sections/PackagesHeader";
 export default {
-  components: { TextWithCardRight },
+  components: { TextWithCardRight, Footer, PackagesHeader },
 
   mounted() {
     gsap.registerPlugin(ScrollTrigger);
@@ -314,26 +269,6 @@ export default {
       start: "top top",
       end: "+=1000%",
     });
-    // gsap.fromTo(
-    //   `#line`,
-    //   {
-    //     scaleY: 0,
-    //   },
-    //   {
-    //     scaleY: 1,
-
-    //     scrollTrigger: {
-    //       trigger: "#foo",
-    //       start: "top, bottom",
-    //       end: "100%, 25%",
-    //       scrub: true,
-    //       markers: true,
-    //       toggleActions: "none none none none",
-    //     },
-    //     duration: 1.4,
-    //     ease: "power2.inOut",
-    //   }
-    // );
   },
 
   props: {
@@ -345,70 +280,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.grid-container {
-  display: grid;
-  grid-template-columns: 0.1fr 1.4fr 3.3fr 0.1fr;
-  grid-template-rows: 0.4fr 1.1fr 1fr 1fr;
-  gap: 0px 0px;
-}
-
-.bg {
-  grid-area: 1 / 2 / 6 / 4;
-}
-
-.role-image {
-  grid-area: 2 / 3 / 5 / 5;
-}
-
-.title {
-  grid-area: 3 / 2 / 4 / 4;
-}
-
-.text {
-  grid-area: 5 / 2 / 6 / 4;
-}
-
-@media (min-width: 768px) {
-  .grid-container {
-    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
-    grid-template-rows: 0.4fr 1.1fr 1fr 1fr;
-  }
-  .bg {
-    grid-area: 1 / 1 / 6 / 4;
-  }
-  .role-image {
-    grid-area: 2 / 3 / 5 / 6;
-  }
-}
-@media (min-width: 1024px) {
-  .grid-container {
-    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
-    grid-template-rows: 0.4fr 1.1fr 1fr 1fr 2fr;
-  }
-  .text {
-    grid-area: 4 / 3 / 6 / 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-container {
-    grid-template-columns: 0.1fr 1.4fr 1fr 0.3fr 0.1fr;
-    grid-template-rows: 0.4fr 1.1fr 1fr 1fr 2fr;
-  }
-
-  .bg {
-    grid-area: 1 / 1 / 6 / 4;
-  }
-  .title {
-    grid-area: 3 / 2 / 4 / 4;
-  }
-
-  .text {
-    grid-area: 4 / 3 / 6 / 2;
-  }
-  .role-image {
-    grid-area: 2 / 3 / 5 / 6;
-  }
-}
-</style>
