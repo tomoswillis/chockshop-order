@@ -13,7 +13,7 @@ class OrderReceived extends Mailable
 
     public $orderedItems;
     public $order;
-    
+
     // public $totalCost;
 
     /**
@@ -23,7 +23,7 @@ class OrderReceived extends Mailable
      */
     public function __construct($orderedItems, $order)
     {
-        
+
         // $this->$totalCost;
         $this->order   = $order;
         $this->orderedItems = $orderedItems;
@@ -36,7 +36,7 @@ class OrderReceived extends Mailable
      */
     public function build()
     {
-        
+
         return $this->markdown('emails.received');
     }
 }
