@@ -1,7 +1,9 @@
 <template>
   <div class="bg-slate">
-    <div class="max-w-7xl mx-auto">
-      <div class="px-5 py-10 lg:grid-cols-2 lg:grid gap-10 lg:items-center">
+    <div class="max-w-7xl mx-auto bgCreamnew">
+      <div
+        class="px-5 py-10 lg:grid-cols-2 lg:grid gap-10 lg:items-center relative"
+      >
         <div class="row-start-two ld:row-start-1 col-start-1">
           <h2
             class="font-chockshop text-chock-dark text-3xl lg:text-5xl py-5 uppercase"
@@ -45,6 +47,17 @@ export default {
 };
 </script>
 
-
+<style scoped>
+.bgCreamnew::before {
+  content: "";
+  background-color: #f4ebd3;
+  position: absolute;
+  top: 0%;
+  bottom: 84%;
+  right: 0;
+  left: 0%;
+  overflow: hidden;
+}
+</style>
 
 
