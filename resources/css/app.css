@@ -99,8 +99,8 @@ hr {
 .badge {
     position: absolute;
     top: 11px;
-    right: -10px;
-    padding: 2px 8px;
+    right: 4px;
+    padding: 2px 6px;
     border-radius: 50%;
     background-color: rgb(253, 99, 99);
     color: white;
@@ -345,6 +345,18 @@ hr {
     background-color: rgba(56, 56, 56, 0.5);
     backdrop-filter: blur(10px);
 }
+
+
+.bg-blur-chock-light {
+    background-color: rgba(244, 235, 211, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.bg-blur-chock-dark {
+    background-color: rgba(178, 151, 123, 0.7);
+    backdrop-filter: blur(3px);
+}
+
 
 .input-user {
     background: url("../../public/images/inputIcons/user.svg") no-repeat;
@@ -655,6 +667,11 @@ hr {
         transform: rotate(26deg);
         left: 64%;
 
+    }
+
+    .badge {
+        right: -10px;
+        padding: 2px 8px;
     }
 }
 

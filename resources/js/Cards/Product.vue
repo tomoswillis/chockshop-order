@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-12 my-16 relative">
+  <div class="mx-5 xl:mx-12 my-16 relative">
     <img
       :src="item.product_bg_image"
       border="0"

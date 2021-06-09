@@ -2,14 +2,14 @@
   <app-layout>
     <div class="w-full checkoutImg relative">
       <div
-        class="w-11/12 mx-auto place-content-center flex md:flex-col lg:flex-row glassClear p-24 min-h-screen"
+        class="lg:w-11/12 mx-auto place-content-center flex flex-col lg:flex-row glassClear px-5 py-24 lg:p-24 min-h-screen"
       >
         <div v-if="!cart" class="w-2/3 self-center glass">
           <h1 class="text-2xl text-white font-chockshop text-center my-8">
             Your cart is empty
           </h1>
         </div>
-        <div class="w-2/3" v-if="cart">
+        <div class="lg:w-2/3" v-if="cart">
           <h3 class="text-white font-chockshop text-xl">Shopping Cart</h3>
           <p class="text-white text-sm">
             You have {{ cart.totalQty }} items in your cart
@@ -27,23 +27,24 @@
           <div
             v-for="item in cart.items"
             :key="item.id"
-            class="flex items-center justify-around my-5 glass rounded-xl p-1"
+            class="flex-col md:flex-row flex items-center justify-around my-5 glass rounded-xl p-1"
           >
             <div class="w-24 rounded-2xl border m-5 border-slate-light">
               <img :src="item.item.product_hero_image" alt="" />
             </div>
-            <div class="w-5/12">
+            <div class="w-3/4 md:w-5/12">
               <h4 class="font-bold text-white">{{ item.item.name }}</h4>
               <p class="text-xs text-slate-light">
                 {{ item.item.description }}
               </p>
             </div>
-            <div
-              class="py-1 px-2 text-white border rounded-md border-slate-light"
-            >
-              <p>{{ item.qty }}</p>
-            </div>
-            <div>
+
+            <div class="flex items-center mt-5 md:mt-0">
+              <div
+                class="py-1 px-2 text-white border rounded-md border-slate-light mr-5"
+              >
+                <p>{{ item.qty }}</p>
+              </div>
               <p
                 class="font-bold text-white"
                 v-text="total(item.item.price)"
@@ -79,7 +80,9 @@
             </inertia-link>
           </div>
         </div>
-        <div class="h-full bg-chock-dark rounded-xl w-1/3 p-2 ml-5 text-white">
+        <div
+          class="h-full bg-chock-dark rounded-xl lg:w-1/3 p-2 lg:ml-5 text-white"
+        >
           <div class="flex flex-wrap -mx-2 mt-8">
             <div class="p-2 w-1/2">
               <div class="relative">

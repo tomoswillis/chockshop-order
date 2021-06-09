@@ -1,11 +1,13 @@
 <template>
   <app-layout>
     <div class="pt-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-chock font-chockshop text-2xl">Chock Shop Orders</h1>
+    <div class="max-w-7xl mx-auto px-0 xl:px-6 lg:px-8">
+      <h1 class="text-chock font-chockshop text-2xl p-5 xl:p-0">
+        Chock Shop Orders
+      </h1>
       <div class="w-full p-5">
         <h3 class="text-white text-sm">Filter By</h3>
-        <div class="flex mt-3 w-1/3 justify-around">
+        <div class="flex mt-3 xl:w-1/3 justify-around">
           <inertia-link method="Get" href="/orders" as="button">
             <span
               class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-chock text-chock-dark hover:bg-chock-dark hover:text-chock"
@@ -47,8 +49,10 @@
     <option value="all">All</option>
     <option value="pending">Pending</option>
 </select>  -->
-      <div class="w-full flex min-h-screen relative">
-        <div class="glass w-5/12 py-6">
+      <div class="w-full flex flex-col xl:flex-row min-h-screen relative">
+        <div
+          class="xl:glass w-full xl:w-5/12 py-6 flex flex-row xl:flex-col overflow-auto"
+        >
           <single-order
             v-for="order in orders"
             :key="order.id"
@@ -60,10 +64,10 @@
         </div>
 
         <div
-          class="w-5/12 text-white p-5 mx-auto rounded fixed inset-x-2/4 glass"
-          v-if="this.test != null"
+          class="xl:w-2/6 text-white p-5 mx-auto rounded xl:fixed inset-x-2/4 glass w-3/4"
+          v-if="this.selectedOrder != null"
         >
-          <selected-order :product="this.test" />
+          <selected-order :product="this.selectedOrder" />
         </div>
       </div>
     </div>
@@ -89,7 +93,7 @@ export default {
 
   data() {
     return {
-      test: null,
+      selectedOrder: null,
       newList: this.orders,
       filter: "all",
     };
@@ -97,7 +101,7 @@ export default {
 
   methods: {
     updateSelected(order) {
-      return (this.test = order);
+      return (this.selectedOrder = order);
     },
 
     total(item) {

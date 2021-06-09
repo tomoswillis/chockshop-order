@@ -42,7 +42,7 @@
     </div>
 
     <packages-header />
-    <text-with-card-right />
+    <text-with-card-right class="relative" />
     <dual-box-section />
 
     <div class="max-w-7xl md:mx-auto md:px-5 bg-slate text-white pt-24">
