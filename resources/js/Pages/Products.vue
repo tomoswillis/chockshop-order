@@ -3,13 +3,13 @@
     <div class="prodBg min-h-66">
       <img
         src="images/products/header-brownie.png"
-        class="absolute -top-0 -right-0 max-h-66 select-none"
+        class="absolute -top-0 -right-0 max-h-66 select-none filter-brightness-50 md:filter-brightness-100"
         alt=""
       />
-      <div class="text-white">
+      <div class="text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-52">
-          <div class="w-2/5">
-            <h1 class="font-chockshop text-2xl w-2/3">
+          <div class="md:w-1/2 lg:w-2/5">
+            <h1 class="font-chockshop text-2xl lg:w-2/3">
               Order what you need, when you need it
             </h1>
             <p class="mt-2">
@@ -27,7 +27,20 @@
     </div>
 
     <div
-      class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative min-h-screen"
+      class="max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8 relative justify-around z-50"
+    >
+      <inertia-link
+        v-if="$page.props.user.roles[0].title === 'Admin'"
+        as="button"
+        :href="route('products.create')"
+        class="bg-chock align-center w-24 rounded text-xs font-bold py-2 text-chock-text cursor-pointer border border-transpartent hover:border-chock hover:bg-chock-dark hover:text-chock mt-5"
+      >
+        Add Product
+      </inertia-link>
+    </div>
+
+    <div
+      class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative justify-around"
     >
       <div v-for="product in product" :key="product.id">
         <product :item="product" />

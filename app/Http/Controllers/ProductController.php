@@ -33,7 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Products.create');
+        return Inertia::render('ProductsCreate');
     }
 
     /**
@@ -42,9 +42,26 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        Product::create($request->validated());
+
+        $request->validate([
+            'name' => ['required', 'min:5', 'max:50'],
+            'slug' => ['required', 'max:50', 'unique:App\Models\Product,slug'],
+
+            'product_bg_image' => ['required', 'max:150', 'url', 'unique:App\Models\Product,product_bg_image'],
+
+            'product_hero_image' => ['required', 'max:150', 'url', 'unique:App\Models\Product,product_hero_image'],
+
+            'product_title_image' => ['required', 'max:150', 'unique:App\Models\Product,product_title_image'],
+
+            'description' => ['required', 'min:10', 'max:150'],
+            'price' => ['required', 'integer'],
+
+        ]);
+        Product::create(
+            $request->only('name', 'slug', 'product_bg_image', 'product_hero_image', 'product_title_image', 'description', 'price')
+        );
 
         return Redirect::route('products.index');
     }
