@@ -42,7 +42,10 @@
     </div>
 
     <packages-header />
-    <div class="max-w-7xl mx-auto px-5 bg-slate text-white pt-5">
+    <text-with-card-right />
+    <dual-box-section />
+
+    <div class="max-w-7xl md:mx-auto md:px-5 bg-slate text-white pt-24">
       <div class="md:flex">
         <div class="md:w-1/2">
           <h2 class="text-4xl font-chockshop uppercase mb-5">
@@ -65,7 +68,7 @@
         </div>
       </div>
 
-      <div class="text-white relative" id="purple">
+      <div class="text-white relative px-5" id="purple">
         <div class="purple relative h-screen">
           <span
             class="line line-2 w-full h-2 min-w-screen block bg-chock-dark relative rounded-full"
@@ -155,7 +158,6 @@
           </div>
         </div>
       </div>
-      <text-with-card-right />
     </div>
   </div>
   <Footer />
@@ -167,8 +169,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextWithCardRight from "@/sections/TextWithCardRight";
 import Footer from "@/Sections/Footer";
 import PackagesHeader from "@/Sections/PackagesHeader";
+import DualBoxSection from "@/Sections/DualBoxSection";
 export default {
-  components: { TextWithCardRight, Footer, PackagesHeader },
+  components: { TextWithCardRight, Footer, PackagesHeader, DualBoxSection },
 
   mounted() {
     gsap.registerPlugin(ScrollTrigger);
@@ -253,11 +256,6 @@ export default {
         "#pack8",
         { opacity: 0, x: -50 },
         { opacity: 1, x: 0, duration: 20 + 10 }
-      )
-      .fromTo(
-        "#pack8",
-        { opacity: 1, x: 0 },
-        { opacity: 0, y: 500, duration: 22 + 10 }
       );
 
     const myST = ScrollTrigger.create({
