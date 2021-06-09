@@ -1,6 +1,7 @@
 <template>
   <div class="grid-container-packages text-white bg-chock pb-5 pt-5 z-0">
     <div id="packageBG" class="bg bg-slate"></div>
+    <div class="bg bg-chock h-auto"></div>
 
     <div id="packageTitle" class="title z-10">
       <h1 class="text-4xl md:text-7xl font-chockshop uppercase pl-5 md:p-0">
