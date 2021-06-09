@@ -9,7 +9,7 @@ We will email you when your order has been confirmed.
 | Product       | Quantity         | Total |
 | ------------- |:-------------:| --------:|
 @foreach($orderedItems as $item)
-| {{ $item['item']['name'] }}   | **{{ $item['qty'] }}** | £{{ $item['qty']*$item['price']/100 }}      |
+| {{ $item['item']['name'] }}   | **{{ $item['qty'] }}** | £{{ $item['item']['price']/100 * $item['qty']}}      |
 @endforeach 
 @endcomponent
 
