@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <contact-form /> -->
+    <contact-form />
     <div
       class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
     >
