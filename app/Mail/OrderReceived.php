@@ -24,7 +24,7 @@ class OrderReceived extends Mailable
     public function __construct($orderedItems, $order)
     {
 
-        // $this->$totalCost;
+
         $this->order   = $order;
         $this->orderedItems = $orderedItems;
     }
