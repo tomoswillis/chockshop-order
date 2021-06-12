@@ -126,9 +126,6 @@ export default {
     },
 
     statusValue: function (e) {
-      //   this.approved = false;
-      //   this.pending = false;
-      //   this.cancelled = false;
       switch (e) {
         case "Approved":
           this.approved = true;
@@ -140,7 +137,7 @@ export default {
           this.cancelled = true;
           break;
         default:
-          return console.log("unknown");
+          return (this.pending = true);
       }
     },
   },

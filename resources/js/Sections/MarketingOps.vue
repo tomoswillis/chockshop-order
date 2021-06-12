@@ -6,24 +6,14 @@
           <h2
             class="font-chockshop text-chock-dark text-3xl lg:text-5xl py-5 uppercase"
           >
-            MARKET <br />
-            OPPORTUNITIES
+            {{ marketOpsData.title }}
           </h2>
-          <p class="text-white text-md leading-8">
-            The guaranteed audience at food festivals, markets and other live
-            events offers the perfect opportunity to share the love for Chock
-            Shop brownies. <br />
-            <br />
-            As more traditional dessert foods have become replaced by
-            American-style cookies, cakes and muffins, our market has grown. The
-            UK bakery sector was valued at £3.6bn in 2015, with UK consumers
-            buying over 1.5 billion sweet baked items, such as cakes, cookies,
-            brownies, doughnuts, etc. This represented a 5.5% increase over the
-            previous year. <br />
-            <br />
-            Our growing appetite for baked goodies is reflected in increasing
-            content in the media, through shows such as The Great British Bake
-            Off helping to raise the profile of high quality baked goods.
+          <p
+            class="text-white text-md leading-8 pt-6"
+            v-for="text in marketOpsData.text"
+            :key="text"
+          >
+            {{ text }}
           </p>
         </div>
         <div class="col-start-2 row-start-1 pt-24">
@@ -33,13 +23,6 @@
               src="images/franchise/stall.png"
               alt=""
             />
-            <!-- <div class="absolute w-2/3 z-0 mOps-whisk">
-              <img
-                src="images/franchise/vectors/Whisk.svg"
-                class="origin-bottom"
-                alt=""
-              />
-            </div> -->
             <div class="absolute w-1/4 z-0 mOps-heart-one">
               <img
                 src="images/franchise/vectors/heart.svg"
@@ -63,28 +46,6 @@
                 alt=""
               />
             </div>
-            <!-- <div class="absolute w-1/12 z-0 mOps-raspberry">
-              <img
-                src="images/franchise/vectors/raspberry.png"
-                class="origin-bottom"
-                alt=""
-              />
-            </div> -->
-            <!-- <div class="absolute w-1/2 z-0 mOps-whiskTwo">
-              <img
-                src="images/franchise/vectors/Whisk.svg"
-                class="origin-bottom"
-                alt=""
-              />
-            </div> -->
-            <!-- <div class="absolute w-1/5 z-0 mOps-laid">
-              <img
-                src="images/franchise/vectors/Laid.svg"
-                class="origin-bottom"
-                alt=""
-              />
-            </div> -->
-
             <div class="absolute w-10 xl:w-16 z-0 mOps-flag-left">
               <img
                 id="mOps-flags"
@@ -107,6 +68,14 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    marketOpsData: Object,
+  },
+};
+</script>
+
 
 
 

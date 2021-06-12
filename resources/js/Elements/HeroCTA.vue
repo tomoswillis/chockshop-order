@@ -3,7 +3,7 @@
     <div
       class="h-64 w-64 z-10 transform translate-y-14 md:translate-y-0 md:translate-x-10 lg:w-80 lg:h-80"
     >
-      <img id="HeroCtaImage" class="" :src="img" alt="hero image" />
+      <img id="HeroCtaImage" class="" :src="heroCtaData.img" alt="hero image" />
     </div>
     <div
       class="h-80 w-80 border-4 border-chock flex flex-col justify-center text-center p-5 lg:p-10 md:w-96 md:h-96 lg:w-104 lg:h-104 relative"
@@ -16,10 +16,10 @@
       <h2
         id="HeroCtaMessage"
         class="text-white font-chockshop text-2xl md:text-3xl uppercase"
-        v-text="message"
+        v-text="heroCtaData.message"
       />
       <chock-shop-button :link="'packages'" class="mt-5 md:mx-10">
-        {{ buttonText }}</chock-shop-button
+        {{ heroCtaData.buttonText }}</chock-shop-button
       >
     </div>
   </div>
@@ -84,10 +84,7 @@ export default {
   },
 
   props: {
-    link: String,
-    buttonText: String,
-    message: String,
-    img: String,
+    heroCtaData: Object,
   },
 };
 </script>

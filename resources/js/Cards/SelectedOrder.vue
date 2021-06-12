@@ -30,8 +30,8 @@
     </div>
 
     <div class="flex justify-around">
-      <div>
-        <button class="w-36 px-3 py-1 mr-2 rounded bg-chock text-chock-text">
+      <div class="flex flex-col md:flex-row">
+        <button class="w-36 px-3 py-1 md:mr-2 rounded bg-chock text-chock-text">
           Edit
         </button>
         <inertia-link
@@ -42,7 +42,7 @@
           @click="$emit('update')"
         >
           <button
-            class="w-36 px-3 py-1 ml-2 rounded bg-green-100 text-green-800"
+            class="w-36 px-3 py-1 md:ml-2 rounded bg-green-100 text-green-800 mt-2 md:mt-0"
             v-if="liveProduct.status.id == 1"
           >
             Approve

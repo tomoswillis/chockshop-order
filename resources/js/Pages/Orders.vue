@@ -2,7 +2,7 @@
   <app-layout>
     <div class="pt-24"></div>
     <div class="max-w-7xl mx-auto px-0 xl:px-6 lg:px-8">
-      <h1 class="text-chock font-chockshop text-2xl p-5 xl:p-0">
+      <h1 class="text-white font-chockshop text-4xl p-5 xl:p-0 uppercase">
         Chock Shop Orders
       </h1>
       <div class="w-full p-5">
@@ -64,7 +64,7 @@
         </div>
 
         <div
-          class="xl:w-2/6 text-white p-5 mx-auto rounded xl:fixed inset-x-2/4 glass w-3/4"
+          class="xl:w-2/6 text-white p-5 mx-auto rounded xl:fixed inset-x-2/4 glass md:w-3/4 mx-1"
           v-if="this.selectedOrder != null"
         >
           <selected-order :product="this.selectedOrder" />

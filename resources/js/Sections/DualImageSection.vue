@@ -5,8 +5,8 @@
         <div class="h-96 lg:h-full">
           <twin-images
             class="h-full"
-            :imageOne="'https://dummyimage.com/500x360/fff/aaa'"
-            :imageTwo="'https://dummyimage.com/500x360/fff/aaa'"
+            :imageOne="dualImageSectionData.imageOne"
+            :imageTwo="dualImageSectionData.imageTwo"
           />
         </div>
 
@@ -15,28 +15,30 @@
             id="title"
             class="font-chockshop text-chock-dark text-3xl lg:text-5xl my-5 uppercase"
           >
-            Who are chock shop?
+            {{ dualImageSectionData.title }}
           </h2>
-          <p class="text-slate text-md leading-8">
-            We specialise in creating delicious taste experiences through our
-            range of extravagant artisan brownies.<br /><br />
-            Crunchy peanut butter, sticky toffee and rocky road are some of the
-            firm flavour favourites among our younger fans.<br /><br />
-            Grown-ups can sink into the bliss of our Belgian Callebaut white
-            chocolate brownies, or go for a cheekier pick-me-up with brownies
-            laced with butter cream liquors, such as Baileys, or Welsh
-            whiskey.<br /><br />
-            <span class="text-white">
-              With thousands of satisfied customers, and after sustained success
-              trading at festivals, shows and other live events, we are
-              expanding the business through a franchise model.
-            </span>
+          <p
+            class="text-slate text-md leading-8 pt-6"
+            v-for="text in dualImageSectionData.paragraphs"
+            :key="text.id"
+          >
+            {{ text }}
           </p>
-          <a href="http://www.chockshop.co.uk">
-            <chock-shop-button class="mt-4 md:w-1/3">
-              Chock Shop Site
-            </chock-shop-button>
-          </a>
+
+          <p
+            class="text-white text-md leading-8 pt-6"
+            v-for="text in dualImageSectionData.paragraphWhite"
+            :key="text.id"
+          >
+            {{ text }}
+          </p>
+
+          <chock-shop-button
+            :link="dualImageSectionData.button.buttonLink"
+            class="mt-4 md:w-1/3"
+          >
+            {{ dualImageSectionData.button.buttonText }}
+          </chock-shop-button>
         </div>
       </div>
     </div>
@@ -56,6 +58,9 @@ export default {
     TwinImages,
     ChockShopButton,
     Chevron,
+  },
+  props: {
+    dualImageSectionData: Object,
   },
   mounted() {
     gsap.registerPlugin(ScrollTrigger);
