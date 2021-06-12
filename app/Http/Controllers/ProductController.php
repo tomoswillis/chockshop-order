@@ -21,8 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         return Inertia::render('Products', [
-            'product' => Product::with('categories:id,name')
-                ->get()
+            'product' => Product::get()
         ]);
     }
 
@@ -45,6 +44,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
+
+
         $request->validate([
             'name' => ['required', 'min:5', 'max:50'],
             'slug' => ['required', 'max:50', 'unique:App\Models\Product,slug'],
@@ -56,12 +57,18 @@ class ProductController extends Controller
             'product_title_image' => ['required', 'max:150', 'unique:App\Models\Product,product_title_image'],
 
             'description' => ['required', 'min:10', 'max:150'],
-            'price' => ['required', 'integer'],
+            'price' => ['required'],
 
         ]);
-        Product::create(
-            $request->only('name', 'slug', 'product_bg_image', 'product_hero_image', 'product_title_image', 'description', 'price')
-        );
+        Product::create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'product_bg_image' => $request->product_bg_image,
+            'product_hero_image' => $request->product_hero_image,
+            'product_title_image' => $request->product_title_image,
+            'description' => $request->description,
+            'price' => $request->price * 100,
+        ]);
 
         return Redirect::route('products.index');
     }
@@ -124,7 +131,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         //
     }
