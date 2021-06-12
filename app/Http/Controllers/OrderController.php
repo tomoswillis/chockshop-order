@@ -8,7 +8,6 @@ use App\Models\Order;
 use App\Models\Status;
 use App\Models\User;
 use App\Mail\OrderApproved;
-use FontLib\Table\Type\name;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
@@ -21,7 +20,7 @@ class OrderController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return Inertia::render('Orders', [
-            'orders' => Order::with(['user:id,name,email', 'products:id,name', 'status:id,name'])->get(),
+            'orders' => Order::with(['user:id,name,email', 'products:id,name', 'status:id,name'])->orderBy('id', 'desc')->get(),
             'status-list' => Status::all(),
         ]);
     }
@@ -31,7 +30,7 @@ class OrderController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return Inertia::render('Orders', [
-            'orders' => Order::with(['user:id,name,email', 'products:id,name', 'status:id,name'])->where('status_id', $filter)->get(),
+            'orders' => Order::with(['user:id,name,email', 'products:id,name', 'status:id,name'])->where('status_id', $filter)->orderBy('id', 'desc')->get(),
             'status-list' => Status::all(),
         ]);
     }
