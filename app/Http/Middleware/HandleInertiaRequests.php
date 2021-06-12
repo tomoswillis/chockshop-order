@@ -40,11 +40,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
-        
-        // dd(User::where('id', 1)->with('roles')->with('pivot')->get());
+        if (Auth::user() === null) {
+            $user = 0;
+        } else {
+            $user = Auth::user()->load('roles');
+        }
         return array_merge(parent::share($request), [
             'cart' =>   $request->session()->get('cart'),
-            // 'user-access' =>   ,
+            'user-access' =>   $user,
         ]);
     }
 }
