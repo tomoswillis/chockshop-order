@@ -7,6 +7,7 @@
         Add Products to the store!
       </h1>
       <form
+        v-bind="$attrs"
         @submit.prevent="submit"
         class="glassClear flex flex-col justify-center p-10 m-5 rounded-xl md:grid md:grid-cols-2 md:gap-4 md:items-end"
       >
@@ -112,7 +113,8 @@
       </form>
     </div>
   </div>
-  <img :src="form.product_bg_image" alt="" />
+
+  <p class="text-white">{{ form.name }}</p>
 </template>
 
 <script>
