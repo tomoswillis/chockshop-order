@@ -15,10 +15,8 @@ class MyOrdersController extends Controller
     {
         $id = $request->user()->id;
 
-        // dd();
-
         return Inertia::render('MyOrders', [
-            'orders' => Order::where('user_id', $id)->with(['products:id,name', 'status:id,name'])->get(),
+            'orders' => Order::where('user_id', $id)->with(['products:id,name', 'status:id,name'])->orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -40,8 +38,8 @@ class MyOrdersController extends Controller
         } else {
 
             return Inertia::render('MyOrders', [
-                'orders' => Order::where('user_id', $userId)->with(['products:id,name', 'status:id,name'])->get(),
-                'selected' => Order::where('id', $id)->with(['products', 'status:id,name'])->get(),
+                'orders' => Order::where('user_id', $userId)->with(['products:id,name', 'status:id,name'])->orderBy('id', 'desc')->get(),
+                'selected' => Order::where('id', $id)->with(['products', 'status:id,name'])->orderBy('id', 'desc')->get(),
             ]);
         }
     }
