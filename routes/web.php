@@ -52,7 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('orders', OrderController::class);
     Route::resource('myorders', MyOrdersController::class);
 
-
+    Route::post('products/update', [
+        'uses' => 'App\Http\Controllers\ProductController@update',
+        'as' => 'products.update',
+    ]);
 
     Route::post('approve/{id}/{status}', [
         'uses' => 'App\Http\Controllers\OrderController@updateStatus',

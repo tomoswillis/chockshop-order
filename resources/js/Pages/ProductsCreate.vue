@@ -113,8 +113,6 @@
       </form>
     </div>
   </div>
-
-  <p class="text-white">{{ form.name }}</p>
 </template>
 
 <script>

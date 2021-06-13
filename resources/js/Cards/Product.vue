@@ -17,12 +17,14 @@
         />
       </div>
       <div class="h-full">
-        <div
+        <inertia-link
           v-if="$page.props.user.roles[0].title === 'Admin'"
+          :href="route('products.edit', item.id)"
+          as="button"
           class="z-50 absolute text-white w-8 h-8 p-2 border-2 border-gray-300 rounded-md inset-x-40 ml-2 hover:bg-chock-dark cursor-pointer"
         >
           <img src="images/edit-2.svg" class="" alt="" />
-        </div>
+        </inertia-link>
         <div class="h-14"></div>
         <div>
           <img :src="item.product_title_image" alt="" class="w-3/4" />

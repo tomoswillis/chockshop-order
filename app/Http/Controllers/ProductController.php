@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Models\Product;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Session;
@@ -56,7 +58,7 @@ class ProductController extends Controller
 
             'product_title_image' => ['required', 'max:150', 'unique:App\Models\Product,product_title_image'],
 
-            'description' => ['required', 'min:10', 'max:150'],
+            'description' => ['required', 'min:10', 'max:300'],
             'price' => ['required'],
 
         ]);
@@ -110,7 +112,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return Inertia::render('Products.show');
+        return Inertia::render('ProductsShow');
     }
 
     /**
@@ -119,9 +121,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request, $id)
     {
-        return Inertia::render('EditProducts');
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $product = Product::findOrFail($id);
+        return Inertia::render('ProductsEdit', [
+            "product" => $product,
+        ]);
     }
 
     /**
@@ -131,9 +138,35 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => ['required', 'min:5', 'max:50'],
+
+
+            'product_bg_image' => ['required', 'max:150', 'url'],
+
+            'product_hero_image' => ['required', 'max:150', 'url'],
+
+            'product_title_image' => ['required', 'max:150'],
+
+            'description' => ['required', 'min:10', 'max:300'],
+
+
+        ]);
+
+        $product = Product::findOrFail($request->id);
+        $product->name = $request->name;
+        $product->product_bg_image = $request->product_bg_image;
+        $product->product_hero_image = $request->product_hero_image;
+        $product->product_title_image = $request->product_title_image;
+        $product->description = $request->description;
+        $product->save();
+
+        $request->session()->flash('flash.banner', 'Product Updated!');
+        $request->session()->flash('flash.bannerStyle', 'success');
+        return  Redirect::back();
     }
 
     /**
